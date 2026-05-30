@@ -1,0 +1,210 @@
+<!-- ================================================================
+  MODULE : PROFILE — screens/profile.html
+  Contient : HTML + CSS + JS du compte client.
+  Dépendances JS : State, Utils, Router, Modal
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-profile" class="screen">
+
+  <div class="topbar">
+    <span class="topbar-title">Mon Compte</span>
+  </div>
+
+  <div class="screen-body">
+
+    <!-- Carte profil -->
+    <div class="profile-hdr">
+      <div class="profile-avatar" id="profile-avatar">👤</div>
+      <div class="profile-name"  id="profile-name-d">Client Black Cherry</div>
+      <div class="profile-info"  id="profile-email-d"></div>
+      <div class="profile-info"  id="profile-phone-d"></div>
+      <div style="margin-top:10px"><span class="badge badge-gold">✦ Membre Privilège</span></div>
+    </div>
+
+    <!-- Menu paramètres -->
+    <div class="settings-list">
+
+      <div class="s-item" onclick="ProfileScreen.editInfo()">
+        <div class="s-left"><div class="s-icon" style="background:rgba(212,175,55,.1)">✏️</div><div><div class="s-lbl">Modifier le profil</div><div class="s-sub">Nom, téléphone, adresse</div></div></div>
+        <span class="s-arrow">›</span>
+      </div>
+
+      <div class="s-item" onclick="ProfileScreen.toggleOrders()">
+        <div class="s-left"><div class="s-icon" style="background:rgba(107,20,64,.3)">📦</div><div><div class="s-lbl">Mes commandes</div><div class="s-sub" id="order-count-lbl">0 commande</div></div></div>
+        <span class="s-arrow">›</span>
+      </div>
+
+      <div class="s-item" onclick="Router.navigate('cgv')">
+        <div class="s-left"><div class="s-icon" style="background:rgba(76,175,122,.1)">📋</div><div><div class="s-lbl">CGV & Confidentialité</div><div class="s-sub">Conditions d'utilisation</div></div></div>
+        <span class="s-arrow">›</span>
+      </div>
+
+      <div class="s-item">
+        <div class="s-left"><div class="s-icon" style="background:rgba(212,175,55,.1)">💬</div><div><div class="s-lbl">Service Client WhatsApp</div><div class="s-sub">+237 6XX XXX XXX</div></div></div>
+        <span class="s-arrow">›</span>
+      </div>
+
+      <div class="s-item" onclick="ProfileScreen.logout()">
+        <div class="s-left"><div class="s-icon" style="background:rgba(212,175,55,.08)">🚪</div><div><div class="s-lbl">Déconnexion</div></div></div>
+        <span class="s-arrow">›</span>
+      </div>
+
+      <div class="s-item" onclick="ProfileScreen.deleteAccount()">
+        <div class="s-left"><div class="s-icon" style="background:rgba(224,80,80,.1)">🗑️</div><div><div class="s-lbl s-danger">Supprimer mon compte</div><div class="s-sub">Effacer définitivement toutes les données</div></div></div>
+        <span class="s-arrow" style="color:var(--error)">›</span>
+      </div>
+
+    </div>
+
+    <!-- Historique des commandes (toggle) -->
+    <div id="orders-container" class="hidden" style="padding:0 16px 24px">
+      <div class="section-title" style="padding:16px 0 8px">Historique</div>
+      <div id="orders-list"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  /* Carte profil */
+  .profile-hdr    { background: linear-gradient(135deg, var(--cherry-deep), var(--surface)); border: 1px solid var(--border-gold); border-radius: var(--r-xl); margin: 14px; padding: 24px; text-align: center; }
+  .profile-avatar { width: 70px; height: 70px; border-radius: 50%; background: var(--cherry-accent); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 10px; border: 2px solid var(--border-gold); }
+  .profile-name   { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+  .profile-info   { font-size: .8rem; color: var(--text-secondary); margin-top: 2px; }
+
+  /* Liste paramètres */
+  .settings-list  { padding: 0 16px; }
+  .s-item         { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: var(--tr); }
+  .s-item:hover   { opacity: .8; }
+  .s-left         { display: flex; align-items: center; gap: 12px; }
+  .s-icon         { width: 36px; height: 36px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .s-lbl          { font-size: .88rem; font-weight: 500; color: var(--text-primary); }
+  .s-danger       { color: var(--error); }
+  .s-sub          { font-size: .76rem; color: var(--text-secondary); }
+  .s-arrow        { color: var(--text-muted); font-size: 1.1rem; }
+
+  /* Carte commande */
+  .order-card     { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 13px; margin-bottom: 9px; }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const ProfileScreen = (() => {
+
+  function onEnter() { refreshDisplay(); }
+
+  function refreshDisplay() {
+    const u = State.get('user');
+    const _  = id => document.getElementById(id);
+    if (_('profile-name-d'))  _('profile-name-d').textContent  = u.name  || 'Client Black Cherry';
+    if (_('profile-email-d')) _('profile-email-d').textContent = u.email || '';
+    if (_('profile-phone-d')) _('profile-phone-d').textContent = u.phone || '';
+    const orders = State.get('orders');
+    const lbl    = _('order-count-lbl');
+    if (lbl) lbl.textContent = `${orders.length} commande${orders.length > 1 ? 's' : ''}`;
+  }
+
+  /* ── Édition profil ── */
+  function editInfo() {
+    const u = State.get('user');
+    Modal.show(`
+      <h3>✏️ Modifier le profil</h3>
+      <div class="input-group"><label class="input-label">Nom complet</label><input class="input" id="e-name" value="${Utils.esc(u.name)}"/></div>
+      <div class="input-group"><label class="input-label">Email</label><input class="input" id="e-email" type="email" value="${Utils.esc(u.email)}"/></div>
+      <div class="input-group"><label class="input-label">Téléphone</label><input class="input" id="e-phone" type="tel" value="${Utils.esc(u.phone)}"/></div>
+      <div class="input-group" style="margin-bottom:20px"><label class="input-label">Adresse</label><input class="input" id="e-addr" value="${Utils.esc(u.address)}"/></div>
+      <button class="btn btn-gold btn-full" onclick="ProfileScreen.saveInfo()">Enregistrer</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px" onclick="Modal.close()">Annuler</button>
+    `);
+  }
+
+  function saveInfo() {
+    const email = document.getElementById('e-email').value.trim();
+    if (email && !Utils.validate.email(email)) { Utils.toast('⚠️ Email invalide'); return; }
+    State.set('user', {
+      ...State.get('user'),
+      name:    document.getElementById('e-name').value.trim() || State.get('user').name,
+      email,
+      phone:   document.getElementById('e-phone').value.trim(),
+      address: document.getElementById('e-addr').value.trim()
+    });
+    Modal.close(); refreshDisplay(); Utils.toast('✓ Profil mis à jour');
+  }
+
+  /* ── Historique ── */
+  function toggleOrders() {
+    const c = document.getElementById('orders-container');
+    if (!c) return;
+    const hidden = c.classList.contains('hidden');
+    if (hidden) {
+      c.classList.remove('hidden');
+      const orders = State.get('orders');
+      const list   = document.getElementById('orders-list');
+      if (!orders.length) {
+        list.innerHTML = `<div style="text-align:center;padding:20px;color:var(--text-secondary)">Aucune commande pour l'instant.</div>`;
+        return;
+      }
+      list.innerHTML = orders.map(o => `
+        <div class="order-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div><div style="font-size:.82rem;font-weight:700">🍒 ${o.id}</div><div style="font-size:.74rem;color:var(--text-muted)">${Utils.fmtDate(o.timestamp)}</div></div>
+            <div style="font-size:.9rem;font-weight:700;color:var(--gold)">${Utils.fmt(o.total)}</div>
+          </div>
+          <div style="font-size:.77rem;color:var(--text-secondary);margin-top:6px">${o.city} — ${o.deliveryMode}</div>
+          <div style="margin-top:6px"><span class="badge badge-success">✓ Confirmée</span></div>
+        </div>`).join('');
+    } else {
+      c.classList.add('hidden');
+    }
+  }
+
+  /* ── Déconnexion ── */
+  function logout() {
+    Modal.show(`
+      <h3>🚪 Déconnexion</h3>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:20px">Voulez-vous vous déconnecter ?</p>
+      <button class="btn btn-gold btn-full" onclick="ProfileScreen._doLogout()">Confirmer</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px" onclick="Modal.close()">Annuler</button>
+    `);
+  }
+
+  function _doLogout() {
+    State.set('loggedIn', false); State.set('isGuest', false); State.clearCart();
+    Modal.close(); Router.navigate('auth');
+  }
+
+  /* ── Suppression du compte (conformité RGPD / Play Store) ── */
+  function deleteAccount() {
+    Modal.show(`
+      <h3 style="color:var(--error)">🗑️ Supprimer le compte</h3>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:8px">
+        Action <strong>irréversible</strong>. Toutes vos données seront effacées.
+      </p>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:20px">
+        Conformément au RGPD et aux politiques Google Play, vous avez le droit à l'effacement.
+      </p>
+      <div class="input-group" style="margin-bottom:16px">
+        <label class="input-label">Tapez "SUPPRIMER" pour confirmer</label>
+        <input class="input" id="del-confirm" placeholder="SUPPRIMER" autocorrect="off"/>
+      </div>
+      <button class="btn btn-danger btn-full" onclick="ProfileScreen._doDelete()">Supprimer définitivement</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px" onclick="Modal.close()">Annuler</button>
+    `);
+  }
+
+  function _doDelete() {
+    if (document.getElementById('del-confirm')?.value.trim() !== 'SUPPRIMER') {
+      Utils.toast('⚠️ Tapez SUPPRIMER pour confirmer'); return;
+    }
+    State.reset(); Modal.close();
+    Utils.toast('✓ Compte supprimé. Au revoir.');
+    setTimeout(() => location.reload(), 1800);
+  }
+
+  return { onEnter, refreshDisplay, editInfo, saveInfo, toggleOrders, logout, _doLogout, deleteAccount, _doDelete };
+})();
+</script>

@@ -1,0 +1,144 @@
+<!-- ================================================================
+  MODULE : CART — screens/cart.html
+  Contient : HTML + CSS + JS du panier d'achat.
+  Dépendances JS : State, Utils, Router, CATALOG, AppShell, HomeScreen
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-cart" class="screen">
+
+  <div class="topbar">
+    <span class="topbar-title">Mon Panier</span>
+    <button class="btn btn-sm btn-danger" onclick="CartScreen.clear()">Vider</button>
+  </div>
+
+  <!-- Barre mode discret -->
+  <div class="discrete-bar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span>🕵️</span>
+      <div>
+        <div style="font-size:.87rem;font-weight:600">Mode Discret</div>
+        <div style="font-size:.74rem;color:var(--text-secondary)">Masque les libellés sensibles</div>
+      </div>
+    </div>
+    <div class="toggle" id="discrete-toggle" onclick="CartScreen.toggleDiscreet()" role="switch" aria-label="Mode discret"></div>
+  </div>
+
+  <div class="screen-body">
+    <div id="cart-items"></div>
+    <div id="cart-summary"></div>
+  </div>
+
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  /* Barre discret */
+  .discrete-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+
+  /* État vide */
+  .cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 24px; text-align: center; gap: 14px; }
+
+  /* Article */
+  .cart-item      { display: flex; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--border); }
+  .cart-item-img  { width: 62px; height: 62px; border-radius: var(--r-md); background: var(--surface-raised); display: flex; align-items: center; justify-content: center; font-size: 1.9rem; flex-shrink: 0; }
+  .cart-item-body { flex: 1; min-width: 0; }
+  .c-name         { font-size: .87rem; font-weight: 600; color: var(--text-primary); }
+  .c-variant      { font-size: .74rem; color: var(--text-muted); margin-top: 1px; }
+  .c-price        { font-size: .85rem; color: var(--gold); margin-top: 2px; }
+  .c-qty-row      { display: flex; align-items: center; gap: 8px; margin-top: 7px; }
+  .qm             { width: 27px; height: 27px; border-radius: 50%; background: var(--surface-high); border: 1px solid var(--border); color: var(--text-primary); font-size: .85rem; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: var(--tr); }
+  .qm:hover       { border-color: var(--gold); color: var(--gold); }
+
+  /* Récapitulatif */
+  .cart-recap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); margin: 14px 16px; padding: 16px; }
+  .r-row      { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: .87rem; }
+  .r-row.total{ border-top: 1px solid var(--border); padding-top: 12px; margin-top: 6px; font-size: .98rem; font-weight: 700; color: var(--gold); }
+  .r-lbl      { color: var(--text-secondary); }
+  .r-val      { font-weight: 600; }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const CartScreen = (() => {
+
+  function onEnter() { _syncToggle(); _render(); }
+
+  function _syncToggle() {
+    const t = document.getElementById('discrete-toggle');
+    if (t) t.className = 'toggle' + (State.get('discreet') ? ' on' : '');
+  }
+
+  /* ── Rendu principal ── */
+  function _render() {
+    const cart = State.get('cart');
+    document.getElementById('cart-items').innerHTML   = cart.length ? _itemsHtml(cart) : _emptyHtml();
+    document.getElementById('cart-summary').innerHTML = cart.length ? _summaryHtml()   : '';
+  }
+
+  function _emptyHtml() {
+    return `<div class="cart-empty">
+      <div style="font-size:3.5rem;opacity:.3">🛍️</div>
+      <div style="font-size:1rem;font-weight:700">Panier vide</div>
+      <div style="font-size:.85rem;color:var(--text-secondary)">Ajoutez vos coups de cœur depuis le catalogue.</div>
+      <button class="btn btn-gold" onclick="Router.navigate('home')">Voir le catalogue</button>
+    </div>`;
+  }
+
+  function _itemsHtml(cart) {
+    const d = State.get('discreet');
+    return cart.map(item => {
+      const p = CATALOG.find(x => x.id === item.id);
+      if (!p) return '';
+      const name    = (d && p.isAdult) ? p.discreteName : Utils.esc(p.name);
+      const variant = [item.color, item.size].filter(Boolean).join(' · ');
+      return `<div class="cart-item">
+        <div class="cart-item-img">${p.emoji}</div>
+        <div class="cart-item-body">
+          <div class="c-name">${name}</div>
+          ${variant ? `<div class="c-variant">${Utils.esc(variant)}</div>` : ''}
+          <div class="c-price">${Utils.fmt(p.price)}</div>
+          <div class="c-qty-row">
+            <div class="qm" onclick="CartScreen.qty('${p.id}',-1)">−</div>
+            <span style="font-size:.85rem;font-weight:600;min-width:18px;text-align:center">${item.qty}</span>
+            <div class="qm" onclick="CartScreen.qty('${p.id}',1)">+</div>
+            <button class="btn btn-sm btn-danger" style="margin-left:auto" onclick="CartScreen.rm('${p.id}')">Retirer</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function _summaryHtml() {
+    const sub   = State.cartSubtotal();
+    const tva   = Math.round(sub * 0.1925);
+    const total = sub + tva;
+    return `<div class="cart-recap">
+      <div class="r-row"><span class="r-lbl">Sous-total (${State.cartCount()} art.)</span><span class="r-val">${Utils.fmt(sub)}</span></div>
+      <div class="r-row"><span class="r-lbl">TVA (19,25 %)</span><span class="r-val">${Utils.fmt(tva)}</span></div>
+      <div class="r-row"><span class="r-lbl">Livraison</span><span class="r-val" style="color:var(--text-muted)">Calculé au checkout</span></div>
+      <div class="r-row total"><span>Total estimé</span><span>${Utils.fmt(total)}</span></div>
+    </div>
+    <div style="padding:0 16px 20px">
+      <button class="btn btn-gold btn-full" onclick="Router.navigate('checkout')" style="padding:14px;font-size:.93rem">Commander →</button>
+    </div>`;
+  }
+
+  /* ── Actions ── */
+  function qty(id, delta) { State.updateQty(id, delta); _render(); AppShell.updateBadge(); }
+  function rm(id)         { State.removeFromCart(id);   _render(); AppShell.updateBadge(); }
+  function clear() {
+    if (!State.get('cart').length) return;
+    State.clearCart(); _render(); AppShell.updateBadge(); Utils.toast('🗑️ Panier vidé');
+  }
+  function toggleDiscreet() {
+    State.set('discreet', !State.get('discreet'));
+    _syncToggle(); _render(); HomeScreen.filter();
+    Utils.toast(State.get('discreet') ? '🕵️ Mode discret activé' : '🔓 Mode discret désactivé');
+  }
+
+  return { onEnter, qty, rm, clear, toggleDiscreet };
+})();
+</script>

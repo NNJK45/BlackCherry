@@ -1,0 +1,160 @@
+<!-- ================================================================
+  MODULE : DETAIL — screens/detail.html
+  Contient : HTML + CSS + JS de la fiche produit.
+  Dépendances JS : State, Utils, Router, CATALOG, CAT_COLOR, AppShell
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-product" class="screen">
+
+  <div class="topbar">
+    <button class="btn-icon btn" onclick="Router.back()" aria-label="Retour">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5m0 0 7 7m-7-7 7-7"/>
+      </svg>
+    </button>
+    <span class="topbar-title">Détail produit</span>
+    <div style="width:38px"></div>
+  </div>
+
+  <!-- Contenu injecté dynamiquement par DetailScreen.open() -->
+  <div class="screen-body">
+    <div id="product-detail-content"></div>
+  </div>
+
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  .detail-img  { width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 7rem; }
+  .detail-body { padding: 20px 16px; }
+  .detail-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .detail-price{ font-size: 1.4rem; font-weight: 700; color: var(--gold); margin-bottom: 14px; }
+  .detail-desc { font-size: .87rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; }
+
+  /* Avertissement adulte */
+  .adult-warn  { background: rgba(61,12,35,.6); border: 1px solid rgba(192,96,128,.3); border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 18px; display: flex; gap: 10px; align-items: flex-start; }
+  .adult-warn-text { font-size: .79rem; color: #C06080; line-height: 1.5; }
+
+  /* Swatches couleur */
+  .swatch-lbl  { font-size: .78rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; }
+  .color-row   { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .color-swatch{ width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: var(--tr); }
+  .color-swatch.selected { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-dim); }
+  #sel-color-lbl{ font-size: .78rem; color: var(--text-secondary); margin-bottom: 16px; }
+
+  /* Chips taille */
+  .size-row    { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .size-chip   { padding: 7px 16px; border: 1px solid var(--border); border-radius: var(--r-sm); font-size: .82rem; font-weight: 600; cursor: pointer; transition: var(--tr); color: var(--text-secondary); user-select: none; }
+  .size-chip.selected { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,.08); }
+
+  /* Quantité */
+  .qty-row  { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .qty-btn  { width: 36px; height: 36px; border-radius: 50%; background: var(--surface-raised); border: 1px solid var(--border); color: var(--text-primary); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--tr); user-select: none; }
+  .qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .qty-val  { font-size: 1rem; font-weight: 700; min-width: 24px; text-align: center; }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const DetailScreen = (() => {
+
+  let _p   = null;  // produit courant
+  let _qty = 1;
+
+  function onEnter(params = {}) { if (params.productId) open(params.productId); }
+
+  function open(productId) {
+    const p = CATALOG.find(x => x.id === productId);
+    if (!p) return;
+    _p = p; _qty = 1;
+    // Sélection par défaut couleur / taille
+    const sc = State.get('selectedColors'); if (!sc[p.id] && p.colors.length) sc[p.id] = p.colors[0].name;
+    const ss = State.get('selectedSizes');  if (!ss[p.id] && p.sizes.length)  ss[p.id] = p.sizes[0];
+    _render();
+    Router.navigate('product');
+  }
+
+  function _render() {
+    const el = document.getElementById('product-detail-content');
+    if (!el || !_p) return;
+    const p   = _p;
+    const dis = State.get('discreet');
+    const name = (dis && p.isAdult) ? p.discreteName : Utils.esc(p.name);
+    const dot  = CAT_COLOR[p.cat] || '#666';
+
+    const adultWarn = p.isAdult ? `
+      <div class="adult-warn">
+        <span style="font-size:1rem;flex-shrink:0">⚠️</span>
+        <div class="adult-warn-text"><strong>Réservé aux adultes (21+).</strong> Tenir hors de portée des enfants. Cesser en cas d'irritation.</div>
+      </div>` : '';
+
+    const colors = p.colors.length ? `
+      <div class="swatch-lbl">Couleur</div>
+      <div class="color-row" id="color-row">
+        ${p.colors.map((c, i) => `<div class="color-swatch ${i===0?'selected':''}" style="background:${c.hex}" title="${c.name}" onclick="DetailScreen.pickColor('${c.name}',this)"></div>`).join('')}
+      </div>
+      <div id="sel-color-lbl">${p.colors[0]?.name || ''}</div>` : '';
+
+    const sizes = p.sizes.length ? `
+      <div class="swatch-lbl" style="margin-top:4px">Taille</div>
+      <div class="size-row">
+        ${p.sizes.map((s, i) => `<div class="size-chip ${i===0?'selected':''}" onclick="DetailScreen.pickSize('${p.id}','${s}',this)">${s}</div>`).join('')}
+      </div>` : '';
+
+    const sb = p.stock <= 3 ? `<span class="badge badge-error">⚡ Dernières pièces</span>`
+             : p.stock <= 8 ? `<span class="badge badge-warn">Stock limité</span>` : '';
+
+    el.innerHTML = `
+      <div class="detail-img" style="background:${p.bgColor}">${p.emoji}</div>
+      <div class="detail-body">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <span class="badge badge-cherry" style="color:${dot}">${p.subcat}</span>
+          ${p.isAdult ? '<span class="badge badge-error">21+</span>' : ''}
+          ${sb}
+        </div>
+        <div class="detail-name">${name}</div>
+        <div class="detail-price">${Utils.fmt(p.price)}</div>
+        ${adultWarn}
+        <div class="detail-desc">${Utils.esc(p.desc)}</div>
+        ${colors}${sizes}
+        <div class="qty-row">
+          <div class="qty-btn" onclick="DetailScreen.dec()">−</div>
+          <div class="qty-val" id="detail-qty">1</div>
+          <div class="qty-btn" onclick="DetailScreen.inc(${p.stock})">+</div>
+          <span style="font-size:.77rem;color:var(--text-muted);margin-left:6px">/ ${p.stock} en stock</span>
+        </div>
+        <button class="btn btn-gold btn-full" onclick="DetailScreen.addToCart()" style="margin-bottom:10px;padding:13px">
+          🛍️&nbsp; Ajouter au panier
+        </button>
+        <button class="btn btn-outline btn-full" onclick="Router.navigate('cart')">Voir le panier</button>
+      </div>`;
+  }
+
+  function pickColor(name, el) {
+    if (!_p) return;
+    State.get('selectedColors')[_p.id] = name; State.save();
+    document.querySelectorAll('#color-row .color-swatch').forEach(s => s.classList.toggle('selected', s === el));
+    const l = document.getElementById('sel-color-lbl'); if (l) l.textContent = name;
+  }
+
+  function pickSize(pid, size, el) {
+    State.get('selectedSizes')[pid] = size; State.save();
+    document.querySelectorAll('.size-chip').forEach(c => c.classList.toggle('selected', c === el));
+  }
+
+  function inc(max) { if (_qty < max) { _qty++; _sync(); } }
+  function dec()    { if (_qty > 1)   { _qty--; _sync(); } }
+  function _sync()  { const e = document.getElementById('detail-qty'); if (e) e.textContent = _qty; }
+
+  function addToCart() {
+    if (!_p) return;
+    if (State.addToCart(_p.id, _qty)) { Utils.toast(`✓ Ajouté au panier ×${_qty}`); AppShell.updateBadge(); }
+    else Utils.toast('⚠️ Stock insuffisant');
+  }
+
+  return { onEnter, open, pickColor, pickSize, inc, dec, addToCart };
+})();
+</script>

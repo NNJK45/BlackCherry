@@ -1,0 +1,58 @@
+/* ================================================================
+   BLACK CHERRY — DESIGN TOKENS
+   Fichier : css/tokens.css
+   Rôle    : Variables CSS globales (couleurs, espacements, ombres)
+   ⚠️  Ne jamais modifier les noms des variables sans chercher
+       toutes leurs utilisations dans les autres fichiers.
+================================================================ */
+
+:root {
+  /* — Palette principale — */
+  --cherry-deep:   #2C001E;
+  --cherry-mid:    #3D0C23;
+  --cherry-accent: #6B1440;
+
+  /* — Or — */
+  --gold:       #D4AF37;
+  --gold-light: #E8C96A;
+  --gold-dim:   #9A7C20;
+
+  /* — Neutres — */
+  --carbon:         #121212;
+  --surface:        #1A1A1A;
+  --surface-raised: #222222;
+  --surface-high:   #2A2A2A;
+
+  /* — Bordures — */
+  --border:      #2E2E2E;
+  --border-gold: rgba(212, 175, 55, 0.25);
+
+  /* — Texte — */
+  --text-primary:   #F5F5F0;
+  --text-secondary: #9A9A90;
+  --text-muted:     #555550;
+
+  /* — Sémantique — */
+  --error:   #E05050;
+  --success: #4CAF7A;
+  --warn:    #E6A817;
+
+  /* — Rayons — */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  /* — Ombres — */
+  --sh-sm:   0 2px 8px  rgba(0, 0, 0, 0.40);
+  --sh-md:   0 6px 24px rgba(0, 0, 0, 0.60);
+  --sh-gold: 0 0 20px   rgba(212, 175, 55, 0.15);
+
+  /* — Transition globale — */
+  --tr: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* — Typographie — */
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+}

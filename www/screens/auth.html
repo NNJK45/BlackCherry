@@ -1,0 +1,212 @@
+<!-- ================================================================
+  MODULE : AUTH — screens/auth.html
+  Contient : HTML + CSS + JS de l'écran de connexion/inscription.
+  Dépendances JS : State, Utils, Router, Modal, HomeScreen
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-auth" class="screen">
+
+  <div class="screen-body">
+
+    <div class="auth-header">
+      <div class="auth-logo">🍒 Black Cherry</div>
+      <div class="auth-sub">Créez un compte ou continuez en tant qu'invité</div>
+    </div>
+
+    <div class="auth-body">
+
+      <!-- OAuth -->
+      <button class="btn-social" id="btn-google" style="margin-bottom:10px">
+        <svg width="20" height="20" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 8 2.9l6-6C34.3 3.2 29.4 1 24 1 14.9 1 7.1 6.7 3.8 14.6l7 5.4C12.5 13.2 17.8 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.4 5.7c4.3-4 6.8-9.9 6.8-16.9z"/>
+          <path fill="#FBBC05" d="M10.8 28.6A14.8 14.8 0 0 1 9.5 24c0-1.6.3-3.1.7-4.6l-7-5.4C1.6 17.1 1 20.5 1 24s.6 6.9 1.8 9.9l8-5.3z"/>
+          <path fill="#34A853" d="M24 47c5.4 0 10-1.8 13.3-4.8l-7.4-5.7c-1.9 1.3-4.2 2-5.9 2-6.2 0-11.4-3.7-13.2-9.3l-8 5.3C7.1 41.3 14.9 47 24 47z"/>
+        </svg>
+        Continuer avec Google
+      </button>
+
+      <button class="btn-social" id="btn-facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+          <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/>
+        </svg>
+        Continuer avec Facebook
+      </button>
+
+      <div class="auth-divider"><span>ou avec email</span></div>
+
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="AuthScreen.showTab('login')">Connexion</div>
+        <div class="auth-tab"        onclick="AuthScreen.showTab('register')">Créer un compte</div>
+      </div>
+
+      <!-- Formulaire connexion -->
+      <div id="auth-login">
+        <div class="input-group">
+          <label class="input-label" for="login-email">Email</label>
+          <input class="input" id="login-email" type="email" placeholder="vous@email.com" autocomplete="email"/>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="login-pwd">Mot de passe</label>
+          <input class="input" id="login-pwd" type="password" placeholder="••••••••" autocomplete="current-password"/>
+        </div>
+        <button class="btn btn-gold btn-full" onclick="AuthScreen.login()" style="padding:13px;margin-top:4px">
+          Se connecter
+        </button>
+      </div>
+
+      <!-- Formulaire inscription -->
+      <div id="auth-register" class="hidden">
+        <div class="input-group">
+          <label class="input-label" for="reg-name">Nom complet</label>
+          <input class="input" id="reg-name" type="text" placeholder="Prénom NOM" autocomplete="name"/>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="reg-email">Email</label>
+          <input class="input" id="reg-email" type="email" placeholder="vous@email.com" autocomplete="email"/>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="reg-phone">Téléphone (WhatsApp)</label>
+          <input class="input" id="reg-phone" type="tel" placeholder="+237 6XX XXX XXX" autocomplete="tel"/>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="reg-pwd">Mot de passe</label>
+          <input class="input" id="reg-pwd" type="password" placeholder="8 caractères minimum" autocomplete="new-password"/>
+        </div>
+        <div class="auth-cgv-row">
+          <input type="checkbox" id="reg-cgv" style="accent-color:var(--gold)"/>
+          <label for="reg-cgv">
+            J'accepte les
+            <span class="link" onclick="Router.navigate('cgv')">Conditions Générales de Vente</span>
+          </label>
+        </div>
+        <button class="btn btn-gold btn-full" onclick="AuthScreen.register()" style="padding:13px">
+          Créer mon compte
+        </button>
+      </div>
+
+      <div class="auth-guest-btn" onclick="AuthScreen.guest()">Continuer sans compte →</div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  #sc-auth .screen-body { background: linear-gradient(180deg, var(--cherry-deep) 0%, var(--carbon) 40%); }
+
+  .auth-header     { text-align:center; padding:36px 24px 24px; }
+  .auth-logo       { font-family:var(--font-display); font-size:2rem; color:var(--gold); letter-spacing:.1em; }
+  .auth-sub        { font-size:.82rem; color:var(--text-secondary); margin-top:4px; }
+
+  .auth-divider    { display:flex; align-items:center; gap:12px; margin:20px 0; }
+  .auth-divider::before,
+  .auth-divider::after { content:''; flex:1; height:1px; background:var(--border); }
+  .auth-divider span   { font-size:.75rem; color:var(--text-muted); white-space:nowrap; }
+
+  .auth-tabs       { display:flex; background:var(--surface-raised); border-radius:var(--r-md); padding:4px; margin-bottom:20px; }
+  .auth-tab        { flex:1; padding:9px; text-align:center; border-radius:var(--r-sm); font-size:.85rem; font-weight:600; cursor:pointer; transition:var(--tr); color:var(--text-muted); user-select:none; }
+  .auth-tab.active { background:var(--cherry-accent); color:var(--text-primary); }
+
+  .auth-body       { padding:0 24px 36px; }
+  .auth-cgv-row    { display:flex; align-items:flex-start; gap:10px; margin-bottom:16px; font-size:.8rem; color:var(--text-secondary); }
+  .auth-cgv-row input { margin-top:2px; flex-shrink:0; }
+  .auth-guest-btn  { text-align:center; margin-top:16px; font-size:.82rem; color:var(--text-secondary); cursor:pointer; text-decoration:underline; }
+  .link            { color:var(--gold); cursor:pointer; text-decoration:underline; }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const AuthScreen = (() => {
+
+  function showTab(tab) {
+    const isLogin = tab === 'login';
+    document.querySelectorAll('.auth-tab').forEach((el, i) =>
+      el.classList.toggle('active', isLogin ? i === 0 : i === 1)
+    );
+    document.getElementById('auth-login').classList.toggle('hidden', !isLogin);
+    document.getElementById('auth-register').classList.toggle('hidden', isLogin);
+  }
+
+  function login() {
+    const email = document.getElementById('login-email').value.trim();
+    const pwd   = document.getElementById('login-pwd').value;
+    if (!Utils.validate.email(email)) { Utils.toast('⚠️ Email invalide'); return; }
+    if (!Utils.validate.pwd(pwd))     { Utils.toast('⚠️ Mot de passe : 8 car. minimum'); return; }
+    const saved = State.get('user');
+    State.set('loggedIn', true);
+    State.set('isGuest', false);
+    if (!saved.email) State.set('user', { ...saved, email, name: saved.name || email.split('@')[0] });
+    Utils.toast('✓ Connexion réussie !');
+    _boot();
+  }
+
+  function register() {
+    const name  = document.getElementById('reg-name').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const phone = document.getElementById('reg-phone').value.trim();
+    const pwd   = document.getElementById('reg-pwd').value;
+    const cgv   = document.getElementById('reg-cgv').checked;
+    if (!name)                        { Utils.toast('⚠️ Entrez votre nom'); return; }
+    if (!Utils.validate.email(email)) { Utils.toast('⚠️ Email invalide'); return; }
+    if (!Utils.validate.phone(phone)) { Utils.toast('⚠️ Téléphone invalide'); return; }
+    if (!Utils.validate.pwd(pwd))     { Utils.toast('⚠️ Mot de passe : 8 car. minimum'); return; }
+    if (!cgv)                         { Utils.toast('⚠️ Acceptez les CGV pour continuer'); return; }
+    State.set('user', { name, email, phone, address: '', avatar: '👤' });
+    State.set('loggedIn', true);
+    State.set('isGuest', false);
+    Utils.toast('✓ Compte créé !');
+    _boot();
+  }
+
+  function googleLogin() {
+    Modal.show(`
+      <h3>🔐 Google</h3>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:20px">
+        En production : <strong>@capacitor-community/firebase-auth</strong>.
+      </p>
+      <button class="btn btn-gold btn-full" onclick="AuthScreen._social('Google')">Simuler connexion Google</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px" onclick="Modal.close()">Annuler</button>
+    `);
+  }
+
+  function facebookLogin() {
+    Modal.show(`
+      <h3>🔐 Facebook</h3>
+      <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:20px">
+        En production : <strong>@capacitor-community/firebase-auth</strong>.
+      </p>
+      <button class="btn btn-gold btn-full" onclick="AuthScreen._social('Facebook')">Simuler connexion Facebook</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px" onclick="Modal.close()">Annuler</button>
+    `);
+  }
+
+  function _social(provider) {
+    State.set('user', { name: `Utilisateur ${provider}`, email: `user@${provider.toLowerCase()}.com`, phone: '', address: '', avatar: '👤' });
+    State.set('loggedIn', true);
+    State.set('isGuest', false);
+    Modal.close();
+    Utils.toast(`✓ Connecté via ${provider}`);
+    _boot();
+  }
+
+  function guest() {
+    State.set('loggedIn', false);
+    State.set('isGuest', true);
+    State.set('user', { name: '', email: '', phone: '', address: '', avatar: '👤' });
+    _boot();
+  }
+
+  function _boot() { HomeScreen.onEnter(); Router.navigate('home'); }
+
+  function init() {
+    document.getElementById('btn-google').addEventListener('click', googleLogin);
+    document.getElementById('btn-facebook').addEventListener('click', facebookLogin);
+  }
+
+  return { init, showTab, login, register, guest, googleLogin, facebookLogin, _social };
+})();
+</script>

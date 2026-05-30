@@ -1,0 +1,334 @@
+<!-- ================================================================
+  MODULE : CHECKOUT — screens/checkout.html
+  Contient : HTML + CSS + JS du tunnel de commande (3 étapes).
+  Étapes   : Livraison → Paiement → Facture
+  Dépendances JS : State, Utils, Router, SHIPPING, PAYMENTS,
+                   CATALOG, WHATSAPP_NUMBER, AppShell
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-checkout" class="screen">
+
+  <div class="topbar">
+    <button class="btn-icon btn" onclick="CheckoutScreen.back()" aria-label="Retour">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5m0 0 7 7m-7-7 7-7"/>
+      </svg>
+    </button>
+    <span class="topbar-title">Commande</span>
+    <div style="width:38px"></div>
+  </div>
+
+  <!-- Indicateur d'étapes (injecté par JS) -->
+  <div id="co-steps" class="co-steps"></div>
+
+  <!-- Corps (injecté par JS selon l'étape) -->
+  <div class="screen-body" id="co-body"></div>
+
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  /* Stepper */
+  .co-steps   { display: flex; align-items: center; padding: 14px 16px; flex-shrink: 0; }
+  .co-step    { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative; }
+  .co-step:not(:last-child)::after { content: ''; position: absolute; top: 13px; left: 60%; width: 80%; height: 1px; background: var(--border); }
+  .co-step.done:not(:last-child)::after  { background: var(--gold-dim); }
+  .co-num     { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; background: var(--surface-raised); border: 1px solid var(--border); color: var(--text-muted); z-index: 1; }
+  .co-step.active .co-num { background: var(--gold); border-color: var(--gold); color: var(--cherry-deep); }
+  .co-step.done   .co-num { background: var(--gold-dim); border-color: var(--gold-dim); color: var(--carbon); }
+  .co-lbl     { font-size: .64rem; font-weight: 600; color: var(--text-muted); text-align: center; }
+  .co-step.active .co-lbl { color: var(--gold); }
+
+  /* Sections étapes */
+  .co-section       { padding: 10px 16px 24px; }
+  .co-title         { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 14px; color: var(--text-primary); }
+
+  /* Paiement */
+  .pay-opt  { display: flex; align-items: center; gap: 14px; padding: 14px; background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--r-md); cursor: pointer; transition: var(--tr); margin-bottom: 10px; }
+  .pay-opt.selected { border-color: var(--gold); background: rgba(212,175,55,.05); box-shadow: 0 0 0 1px var(--gold); }
+  .pay-icon { width: 40px; height: 40px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .pay-name { font-size: .9rem; font-weight: 600; color: var(--text-primary); }
+  .pay-desc { font-size: .77rem; color: var(--text-secondary); }
+  .radio    { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--tr); }
+  .pay-opt.selected .radio { border-color: var(--gold); }
+  .pay-opt.selected .radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+
+  /* Reçu */
+  .receipt     { background: var(--surface); border: 1px solid var(--border-gold); border-radius: var(--r-xl); margin: 14px; padding: 24px; box-shadow: var(--sh-gold); }
+  .r-hdr       { text-align: center; margin-bottom: 20px; }
+  .r-logo      { font-family: var(--font-display); font-size: 1.35rem; color: var(--gold); }
+  .r-num       { font-size: .72rem; color: var(--text-muted); margin-top: 3px; }
+  .r-row       { display: flex; justify-content: space-between; padding: 5px 0; font-size: .84rem; }
+  .r-row .rl   { color: var(--text-secondary); }
+  .r-row .rv   { font-weight: 600; text-align: right; max-width: 58%; }
+  .r-items     { margin: 14px 0; padding: 12px 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+  .r-item      { font-size: .81rem; color: var(--text-secondary); padding: 3px 0; }
+  .r-total     { display: flex; justify-content: space-between; padding-top: 12px; font-size: 1rem; font-weight: 700; color: var(--gold); }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const CheckoutScreen = (() => {
+
+  let _step = 1;
+  let _data = {};
+
+  function onEnter() { _step = 1; _data = {}; _render(); }
+
+  function back() { _step > 1 ? (--_step, _render()) : Router.navigate('cart'); }
+
+  /* ── Stepper ── */
+  function _render() {
+    document.getElementById('co-steps').innerHTML = ['Livraison','Paiement','Facture'].map((l, i) => {
+      const n = i + 1;
+      const cls = n < _step ? 'co-step done' : n === _step ? 'co-step active' : 'co-step';
+      return `<div class="${cls}"><div class="co-num">${n < _step ? '✓' : n}</div><div class="co-lbl">${l}</div></div>`;
+    }).join('');
+    const body = document.getElementById('co-body');
+    if (!body) return;
+    if (_step === 1) body.innerHTML = _step1();
+    if (_step === 2) body.innerHTML = _step2();
+    if (_step === 3) _step3(body);
+  }
+
+  /* ══ ÉTAPE 1 : LIVRAISON ════════════════════════════════════ */
+  function _step1() {
+    const u      = State.get('user');
+    const cities = Object.keys(SHIPPING.cities);
+    return `<div class="co-section">
+      <div class="co-title">📍 Livraison & Coordonnées</div>
+      <div class="input-group"><label class="input-label">Nom complet *</label><input class="input" id="co-name" value="${Utils.esc(u.name)}" placeholder="Prénom NOM"/></div>
+      <div class="input-group"><label class="input-label">Téléphone (WhatsApp) *</label><input class="input" id="co-phone" type="tel" value="${Utils.esc(u.phone)}" placeholder="+237 6XX XXX XXX"/></div>
+      <div class="input-group"><label class="input-label">Email</label><input class="input" id="co-email" type="email" value="${Utils.esc(u.email)}" placeholder="vous@email.com"/></div>
+      <div class="input-group">
+        <label class="input-label">Ville *</label>
+        <select class="select" id="co-city" onchange="CheckoutScreen._onCity()">
+          <option value="">-- Sélectionnez --</option>
+          ${cities.map(c => `<option value="${c}">${c}</option>`).join('')}
+        </select>
+      </div>
+      <div id="co-mode-wrap" class="hidden">
+        <div class="input-group"><label class="input-label">Mode de livraison *</label><select class="select" id="co-mode" onchange="CheckoutScreen._onMode()"><option value="">-- Choisissez --</option></select></div>
+      </div>
+      <div id="co-zone-wrap" class="hidden">
+        <div class="input-group"><label class="input-label">Zone / Agence *</label><select class="select" id="co-zone" onchange="CheckoutScreen._onZone()"><option value="">-- Sélectionnez --</option></select></div>
+      </div>
+      <div id="co-ship-est" class="hidden" style="margin-bottom:14px"></div>
+      <div class="input-group"><label class="input-label">Adresse précise</label><input class="input" id="co-addr" value="${Utils.esc(u.address)}" placeholder="Rue, quartier, repère…"/></div>
+      <button class="btn btn-gold btn-full" onclick="CheckoutScreen._next1()" style="padding:13px;margin-top:4px">Continuer →</button>
+    </div>`;
+  }
+
+  function _onCity() {
+    const city = document.getElementById('co-city').value;
+    const mw = document.getElementById('co-mode-wrap');
+    const zw = document.getElementById('co-zone-wrap');
+    const es = document.getElementById('co-ship-est');
+    mw.classList.toggle('hidden', !city); zw.classList.add('hidden'); es.classList.add('hidden');
+    if (!city) return;
+    const conf = SHIPPING.cities[city];
+    const sel  = document.getElementById('co-mode');
+    sel.innerHTML = '<option value="">-- Choisissez --</option>';
+    if (conf.isIntercity) {
+      conf.agencies.forEach(a => sel.innerHTML += `<option value="agency_${a}">${a}</option>`);
+      const p = SHIPPING.compute(city, 'intercity', null, State.get('cart'));
+      const w = SHIPPING.simulateWeight(State.get('cart'));
+      es.classList.remove('hidden');
+      es.innerHTML = `<div class="card card-gold" style="padding:11px 14px"><div style="font-size:.8rem;color:var(--text-secondary)">⚖️ Poids estimé : <strong>${w.toFixed(2)} kg</strong></div><div style="font-size:.83rem;margin-top:3px">Frais : <strong style="color:var(--gold)">${Utils.fmt(p)}</strong></div></div>`;
+    } else {
+      if (conf.hasPickup)   sel.innerHTML += `<option value="pickup">Retrait point relais (Gratuit)</option>`;
+      if (conf.hasDomicile) sel.innerHTML += `<option value="domicile">Livraison à domicile</option>`;
+    }
+  }
+
+  function _onMode() {
+    const city = document.getElementById('co-city').value;
+    const mode = document.getElementById('co-mode').value;
+    const zw   = document.getElementById('co-zone-wrap');
+    const es   = document.getElementById('co-ship-est');
+    zw.classList.add('hidden'); es.classList.add('hidden');
+    if (!mode) return;
+    const conf = SHIPPING.cities[city];
+    if (mode === 'pickup') {
+      es.classList.remove('hidden');
+      es.innerHTML = `<div class="card card-gold" style="padding:11px 14px"><div style="font-size:.83rem">Retrait : <strong style="color:var(--gold)">Gratuit</strong> — Adresse communiquée après confirmation.</div></div>`;
+    } else if (mode === 'domicile') {
+      zw.classList.remove('hidden');
+      const zs = document.getElementById('co-zone');
+      zs.innerHTML = '<option value="">-- Sélectionnez votre zone --</option>';
+      Object.entries(conf.zones).forEach(([z, p]) => zs.innerHTML += `<option value="${z}">${z} — ${Utils.fmt(p)}</option>`);
+    }
+  }
+
+  function _onZone() {
+    const city = document.getElementById('co-city').value;
+    const zone = document.getElementById('co-zone').value;
+    const es   = document.getElementById('co-ship-est');
+    if (!zone) return;
+    const price = SHIPPING.cities[city].zones[zone];
+    es.classList.remove('hidden');
+    es.innerHTML = `<div class="card card-gold" style="padding:11px 14px"><div style="font-size:.83rem">Frais : <strong style="color:var(--gold)">${Utils.fmt(price)}</strong></div></div>`;
+  }
+
+  function _next1() {
+    const name    = document.getElementById('co-name').value.trim();
+    const phone   = document.getElementById('co-phone').value.trim();
+    const email   = document.getElementById('co-email').value.trim();
+    const city    = document.getElementById('co-city').value;
+    const modeRaw = document.getElementById('co-mode')?.value || '';
+    const zone    = document.getElementById('co-zone')?.value || '';
+    const addr    = document.getElementById('co-addr').value.trim();
+    if (!name)                              { Utils.toast('⚠️ Entrez votre nom'); return; }
+    if (!Utils.validate.phone(phone))       { Utils.toast('⚠️ Téléphone invalide'); return; }
+    if (email && !Utils.validate.email(email)) { Utils.toast('⚠️ Email invalide'); return; }
+    if (!city)                              { Utils.toast('⚠️ Sélectionnez une ville'); return; }
+    if (!modeRaw)                           { Utils.toast('⚠️ Choisissez un mode de livraison'); return; }
+    const conf = SHIPPING.cities[city];
+    let deliveryMode, shipping;
+    if (conf.isIntercity) {
+      deliveryMode = modeRaw.replace('agency_', '');
+      shipping     = SHIPPING.compute(city, 'intercity', null, State.get('cart'));
+    } else if (modeRaw === 'pickup') {
+      deliveryMode = 'Retrait point relais'; shipping = 0;
+    } else {
+      if (!zone) { Utils.toast('⚠️ Sélectionnez votre zone'); return; }
+      deliveryMode = `Domicile — ${zone}`;
+      shipping     = conf.zones[zone] || 0;
+    }
+    const u = State.get('user');
+    State.set('user', { ...u, name, phone, email: email || u.email, address: addr });
+    _data = { name, phone, email, address: addr, city, deliveryMode, zone: zone || null, shipping };
+    _step = 2; _render();
+  }
+
+  /* ══ ÉTAPE 2 : PAIEMENT ══════════════════════════════════════ */
+  function _step2() {
+    return `<div class="co-section">
+      <div class="co-title">💳 Mode de paiement</div>
+      ${PAYMENTS.map(m => `
+        <div class="pay-opt" id="pay-${m.id}" onclick="CheckoutScreen._selectPay('${m.id}')">
+          <div class="pay-icon" style="background:${m.color}">${m.emoji}</div>
+          <div style="flex:1"><div class="pay-name">${m.name}</div><div class="pay-desc">${m.desc}</div></div>
+          <div class="radio"></div>
+        </div>`).join('')}
+      <div id="pay-fields" style="margin-top:12px"></div>
+      <button class="btn btn-gold btn-full" onclick="CheckoutScreen._next2()" style="padding:13px;margin-top:4px">Continuer →</button>
+    </div>`;
+  }
+
+  function _selectPay(id) {
+    _data.payment      = id;
+    _data.paymentLabel = PAYMENTS.find(m => m.id === id)?.name || id;
+    document.querySelectorAll('.pay-opt').forEach(el => el.classList.toggle('selected', el.id === `pay-${id}`));
+    const pf = document.getElementById('pay-fields');
+    if (!pf) return;
+    if (id === 'mtn' || id === 'orange') {
+      const col = id === 'mtn' ? '#FFCC00' : '#FF6600';
+      pf.innerHTML = `<div class="card" style="padding:14px;border-color:${col}30">
+        <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:10px">Numéro ${id === 'mtn' ? 'MTN' : 'Orange'} Money :</div>
+        <input class="input" id="mobile-num" type="tel" placeholder="+237 6XX XXX XXX" value="${Utils.esc(State.get('user').phone)}"/>
+        <div style="font-size:.73rem;color:var(--text-muted);margin-top:7px">📲 Code OTP envoyé pour confirmation.</div>
+      </div>`;
+    } else if (id === 'card') {
+      pf.innerHTML = `<div class="card" style="padding:14px;border-color:var(--border-gold)">
+        <div style="font-size:.8rem;color:var(--text-secondary);margin-bottom:12px">🔒 Paiement sécurisé SSL — Notch Pay / CamPay</div>
+        <div class="input-group"><label class="input-label">Titulaire</label><input class="input" id="card-holder" placeholder="NOM PRÉNOM" autocomplete="cc-name"/></div>
+        <div class="input-group"><label class="input-label">Numéro</label><input class="input" id="card-num" type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" autocomplete="cc-number" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(.{4})/g,'$1 ').trim()"/></div>
+        <div style="display:flex;gap:10px">
+          <div class="input-group" style="flex:1"><label class="input-label">Expiration</label><input class="input" id="card-exp" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/^(.{2})(.+)/,'$1/$2')"/></div>
+          <div class="input-group" style="flex:1"><label class="input-label">CVV</label><input class="input" id="card-cvv" type="password" placeholder="•••" maxlength="4" autocomplete="cc-csc"/></div>
+        </div>
+        <div style="font-size:.72rem;color:var(--text-muted)">Données jamais stockées par Black Cherry.</div>
+      </div>`;
+    }
+  }
+
+  function _next2() {
+    if (!_data.payment) { Utils.toast('⚠️ Sélectionnez un mode de paiement'); return; }
+    if (_data.payment === 'mtn' || _data.payment === 'orange') {
+      const n = document.getElementById('mobile-num')?.value.trim();
+      if (!n) { Utils.toast('⚠️ Entrez votre numéro Mobile Money'); return; }
+      _data.mobileNum = n;
+    } else if (_data.payment === 'card') {
+      const h = document.getElementById('card-holder')?.value.trim();
+      const n = document.getElementById('card-num')?.value.replace(/\s/g,'');
+      const e = document.getElementById('card-exp')?.value.trim();
+      const c = document.getElementById('card-cvv')?.value.trim();
+      if (!h || n.length < 15 || e.length < 4 || c.length < 3) { Utils.toast('⚠️ Informations de carte incomplètes'); return; }
+      _data.cardLast4 = n.slice(-4);
+    }
+    _step = 3; _render();
+  }
+
+  /* ══ ÉTAPE 3 : FACTURE ═══════════════════════════════════════ */
+  function _step3(body) {
+    const d    = _data;
+    const oid  = Utils.orderId();
+    const cart = State.get('cart');
+    const sub  = State.cartSubtotal();
+    const tva  = Math.round(sub * 0.1925);
+    const tot  = sub + tva + d.shipping;
+    const dis  = State.get('discreet');
+
+    const lines = cart.map(item => {
+      const p = CATALOG.find(x => x.id === item.id);
+      if (!p) return '';
+      const n = (dis && p.isAdult) ? p.discreteName : p.name;
+      return `<div class="r-item">${n} × ${item.qty} — ${Utils.fmt(p.price * item.qty)}</div>`;
+    }).join('');
+
+    const waMsg = encodeURIComponent(
+      `🍒 NOUVELLE COMMANDE BLACK CHERRY\n━━━━━━━━━━━━━━━━━━━━\n` +
+      `N° : ${oid}\nClient : ${d.name}\nTél : ${d.phone}\nEmail : ${d.email||'N/A'}\n` +
+      `━━━━━━━━━━━━━━━━━━━━\nARTICLES :\n` +
+      cart.map(item => { const p = CATALOG.find(x=>x.id===item.id); const n=(dis&&p?.isAdult)?p.discreteName:p?.name||item.id; return `• ${n} × ${item.qty}`; }).join('\n') +
+      `\n━━━━━━━━━━━━━━━━━━━━\nVille : ${d.city}\nLivraison : ${d.deliveryMode}\n` +
+      `${d.zone?`Zone : ${d.zone}\n`:''}Paiement : ${d.paymentLabel}${d.cardLast4?` •••${d.cardLast4}`:''}\n` +
+      `━━━━━━━━━━━━━━━━━━━━\nSous-total : ${Utils.fmt(sub)}\nTVA : ${Utils.fmt(tva)}\n` +
+      `Livraison : ${Utils.fmt(d.shipping)}\nTOTAL : ${Utils.fmt(tot)}`
+    );
+
+    State.addOrder({ id: oid, ...d, items: cart, subtotal: sub, tva, total: tot, timestamp: new Date().toISOString() });
+    AppShell.updateBadge();
+    if (typeof ProfileScreen !== 'undefined') ProfileScreen.refreshDisplay();
+
+    body.innerHTML = `
+      <div class="receipt">
+        <div class="r-hdr">
+          <div class="r-logo">🍒 Black Cherry</div>
+          <div style="font-size:.68rem;color:var(--text-muted);letter-spacing:.1em">INTIMATELY YOURS</div>
+          <div class="r-num">N° ${oid} — ${Utils.fmtDate(new Date())}</div>
+        </div>
+        <div style="text-align:center;padding:16px 0">
+          <div style="font-size:2.2rem">✅</div>
+          <div style="font-size:1rem;font-weight:700;margin-top:6px">Commande confirmée !</div>
+          <div style="font-size:.82rem;color:var(--text-secondary);margin-top:4px">Notre équipe vous contactera sous 24 h.</div>
+        </div>
+        <div class="r-items">${lines}</div>
+        <div class="r-row"><span class="rl">Client</span><span class="rv">${Utils.esc(d.name)}</span></div>
+        <div class="r-row"><span class="rl">Téléphone</span><span class="rv">${Utils.esc(d.phone)}</span></div>
+        <div class="r-row"><span class="rl">Ville</span><span class="rv">${Utils.esc(d.city)}</span></div>
+        <div class="r-row"><span class="rl">Livraison</span><span class="rv">${Utils.esc(d.deliveryMode)}</span></div>
+        ${d.zone ? `<div class="r-row"><span class="rl">Zone</span><span class="rv">${Utils.esc(d.zone)}</span></div>` : ''}
+        <div class="r-row"><span class="rl">Paiement</span><span class="rv">${Utils.esc(d.paymentLabel)}${d.cardLast4?` ••${d.cardLast4}`:''}</span></div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--border)">
+          <div class="r-row"><span class="rl">Sous-total</span><span class="rv">${Utils.fmt(sub)}</span></div>
+          <div class="r-row"><span class="rl">TVA 19,25 %</span><span class="rv">${Utils.fmt(tva)}</span></div>
+          <div class="r-row"><span class="rl">Livraison</span><span class="rv">${Utils.fmt(d.shipping)}</span></div>
+          <div class="r-total"><span>TOTAL</span><span>${Utils.fmt(tot)}</span></div>
+        </div>
+      </div>
+      <div style="padding:0 16px 24px;display:flex;flex-direction:column;gap:10px">
+        <a class="btn btn-gold btn-full" href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" rel="noopener" style="text-decoration:none;padding:13px">
+          📲 &nbsp;Envoyer sur WhatsApp Service Client
+        </a>
+        <button class="btn btn-ghost btn-full" onclick="Router.navigate('home')">Retour au catalogue</button>
+      </div>`;
+  }
+
+  return { onEnter, back, _onCity, _onMode, _onZone, _next1, _selectPay, _next2 };
+})();
+</script>

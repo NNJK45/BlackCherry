@@ -1,0 +1,238 @@
+<!-- ================================================================
+  MODULE : HOME — screens/home.html
+  Contient : HTML + CSS + JS du catalogue produits.
+  Dépendances JS : State, Utils, Router, CATALOG, CATEGORIES, CAT_COLOR, DetailScreen
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-home" class="screen">
+
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:8px">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+        <circle cx="36" cy="62" r="22" fill="#3D0C23" stroke="#D4AF37" stroke-width="2"/>
+        <circle cx="64" cy="68" r="18" fill="#2C001E" stroke="#D4AF37" stroke-width="2"/>
+        <path d="M36 40 Q50 10 70 18 Q62 30 64 50" stroke="#D4AF37" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="topbar-title">Black Cherry</span>
+    </div>
+    <button class="btn-icon btn" onclick="Router.navigate('profile')" aria-label="Mon compte">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="screen-body">
+
+    <div class="hero-banner">
+      <div class="hero-ornament">🍒</div>
+      <div class="hero-content">
+        <div class="hero-title">Collection Exclusive</div>
+        <div class="hero-sub">Lingerie · Skincare · Bien-être</div>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input id="search-input" type="text" placeholder="Rechercher un produit..."
+             oninput="HomeScreen.filter()" autocomplete="off" autocorrect="off"
+             aria-label="Rechercher"/>
+    </div>
+
+    <div class="cat-row"    id="cat-row"></div>
+    <div class="subcat-row" id="subcat-row"></div>
+    <div class="section-title" id="section-title">Tous les produits</div>
+    <div class="products-list" id="products-list"></div>
+
+  </div>
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  /* Hero */
+  .hero-banner {
+    margin: 14px;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    position: relative;
+    height: 152px;
+    background: linear-gradient(135deg, var(--cherry-deep), var(--cherry-accent));
+  }
+  .hero-ornament {
+    position: absolute; right: 18px; top: 50%; transform: translateY(-60%);
+    font-size: 4.8rem; opacity: .1; user-select: none;
+  }
+  .hero-content {
+    position: absolute; inset: 0; padding: 22px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,.55), transparent 60%);
+  }
+  .hero-title { font-family: var(--font-display); font-size: 1.55rem; color: var(--text-primary); }
+  .hero-sub   { font-size: .78rem; color: rgba(245,245,240,.65); }
+
+  /* Search */
+  .search-bar {
+    display: flex; align-items: center; gap: 10px;
+    margin: 10px 16px; padding: 10px 14px;
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--r-md);
+  }
+  .search-bar input { flex: 1; background: transparent; border: none; outline: none; font-family: var(--font-body); font-size: .88rem; color: var(--text-primary); }
+  .search-bar input::placeholder { color: var(--text-muted); }
+  .search-bar svg { color: var(--text-muted); width: 17px; height: 17px; flex-shrink: 0; }
+
+  /* Chips catégorie */
+  .cat-row {
+    display: flex; gap: 8px; padding: 0 16px 3px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .cat-row::-webkit-scrollbar { display: none; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 8px 15px; border-radius: 9999px;
+    font-size: .8rem; font-weight: 600; white-space: nowrap;
+    cursor: pointer; transition: var(--tr);
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+    user-select: none;
+  }
+  .chip.active    { background: linear-gradient(135deg, var(--cherry-mid), var(--cherry-accent)); border-color: var(--cherry-accent); color: var(--text-primary); }
+  .chip:hover:not(.active) { border-color: var(--border-gold); color: var(--gold); }
+
+  /* Sous-chips */
+  .subcat-row {
+    display: flex; gap: 6px; padding: 6px 16px 0;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .subcat-row::-webkit-scrollbar { display: none; }
+  .sub-chip {
+    display: inline-flex; align-items: center;
+    padding: 5px 12px; border-radius: 9999px;
+    font-size: .75rem; font-weight: 600; white-space: nowrap;
+    cursor: pointer; transition: var(--tr);
+    border: 1px dashed var(--border); background: transparent; color: var(--text-muted);
+    user-select: none;
+  }
+  .sub-chip.active { border-style: solid; border-color: var(--gold-dim); color: var(--gold); background: rgba(212,175,55,.07); }
+
+  /* Grille produits */
+  .products-list      { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 16px; }
+  .product-card       { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; cursor: pointer; transition: var(--tr); display: flex; }
+  .product-card:active,
+  .product-card:hover { border-color: var(--border-gold); box-shadow: var(--sh-gold); transform: translateY(-1px); }
+  .product-card-img   { width: 110px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
+  .product-card-body  { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+  .p-name   { font-size: .9rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 3px; }
+  .p-sub    { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .p-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .p-price  { font-size: .92rem; font-weight: 700; color: var(--gold); }
+  .p-stock  { display: flex; align-items: center; gap: 5px; }
+  .p-dot    { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .p-slbl   { font-size: .72rem; }
+  .cat-dot  { position: absolute; top: 8px; left: 8px; width: 7px; height: 7px; border-radius: 50%; }
+</style>
+
+
+<!-- ── LOGIQUE JS ─────────────────────────────────────────────── -->
+<script>
+const HomeScreen = (() => {
+
+  let _cat = 'all';
+  let _sub = null;
+
+  const TITLES = { all: 'Tous les produits', lingerie: '💋 Lingerie', skincare: '✨ Skincare', adult: '🔞 Adulte' };
+
+  function onEnter() { _buildCats(); _render(); }
+
+  /* ── Chips catégorie ── */
+  function _buildCats() {
+    const row = document.getElementById('cat-row');
+    if (!row) return;
+    row.innerHTML = CATEGORIES.map(c =>
+      `<div class="chip ${c.id === _cat ? 'active' : ''}" data-cat="${c.id}" onclick="HomeScreen.setCat('${c.id}')">${c.label}</div>`
+    ).join('');
+    _buildSubs();
+  }
+
+  function _buildSubs() {
+    const row = document.getElementById('subcat-row');
+    if (!row) return;
+    const catObj = CATEGORIES.find(c => c.id === _cat);
+    row.innerHTML = (catObj && catObj.sub.length)
+      ? catObj.sub.map(s => `<div class="sub-chip ${s.id === _sub ? 'active' : ''}" data-sub="${s.id}" onclick="HomeScreen.setSub('${s.id}')">${s.label}</div>`).join('')
+      : '';
+  }
+
+  /* ── Filtres ── */
+  function setCat(catId) {
+    _cat = catId; _sub = null;
+    document.querySelectorAll('#cat-row .chip').forEach(el => el.classList.toggle('active', el.dataset.cat === catId));
+    _buildSubs();
+    const t = document.getElementById('section-title');
+    if (t) t.textContent = TITLES[catId] || 'Produits';
+    _render();
+  }
+
+  function setSub(subId) {
+    _sub = (_sub === subId) ? null : subId;
+    document.querySelectorAll('.sub-chip').forEach(el => el.classList.toggle('active', el.dataset.sub === _sub));
+    _render();
+  }
+
+  function filter() { _render(); }
+
+  /* ── Rendu ── */
+  function _render() {
+    const grid = document.getElementById('products-list');
+    if (!grid) return;
+    const q = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
+    const d = State.get('discreet');
+
+    const items = CATALOG.filter(p => {
+      if (_cat !== 'all' && p.cat !== _cat) return false;
+      if (_sub && p.subcat !== _sub)         return false;
+      if (!q) return true;
+      const n = (d && p.isAdult) ? p.discreteName : p.name;
+      return n.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
+    });
+
+    if (!items.length) {
+      grid.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-secondary)">Aucun produit trouvé</div>`;
+      return;
+    }
+    grid.innerHTML = items.map(_card).join('');
+  }
+
+  function _card(p) {
+    const d    = State.get('discreet');
+    const name = (d && p.isAdult) ? p.discreteName : Utils.esc(p.name);
+    const dot  = CAT_COLOR[p.cat] || '#666';
+    const sc   = p.stock <= 3 ? 'var(--error)' : p.stock <= 8 ? 'var(--warn)' : 'var(--success)';
+    const sl   = p.stock <= 3 ? 'Dernières pièces' : p.stock <= 8 ? 'Stock limité' : 'En stock';
+    return `<div class="product-card" onclick="DetailScreen.open('${p.id}')">
+      <div class="product-card-img" style="background:${p.bgColor}">
+        <div class="cat-dot" style="background:${dot}"></div>
+        <span>${p.emoji}</span>
+      </div>
+      <div class="product-card-body">
+        <div>
+          <div class="p-name">${name}</div>
+          <div class="p-sub" style="color:${dot}">${p.subcat}</div>
+        </div>
+        <div class="p-bottom">
+          <div class="p-price">${Utils.fmt(p.price)}</div>
+          <div class="p-stock">
+            <div class="p-dot" style="background:${sc}"></div>
+            <span class="p-slbl" style="color:${sc}">${sl}</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  return { onEnter, setCat, setSub, filter };
+})();
+</script>

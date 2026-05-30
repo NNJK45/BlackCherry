@@ -1,0 +1,77 @@
+<!-- ================================================================
+  MODULE : CGV — screens/cgv.html
+  Contient : HTML + CSS des Conditions Générales de Vente.
+  Pas de JS — contenu purement statique.
+================================================================ -->
+
+<!-- ── TEMPLATE HTML ─────────────────────────────────────────── -->
+<div id="sc-cgv" class="screen">
+
+  <div class="topbar">
+    <button class="btn-icon btn" onclick="Router.back()" aria-label="Retour">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5m0 0 7 7m-7-7 7-7"/>
+      </svg>
+    </button>
+    <span class="topbar-title">CGV & Confidentialité</span>
+    <div style="width:38px"></div>
+  </div>
+
+  <div class="screen-body cgv-body">
+
+    <h3>1. Présentation</h3>
+    <p>L'application Black Cherry est éditée par Black Cherry SARL, opérant au Cameroun. L'utilisation de l'application implique l'acceptation pleine et entière des présentes Conditions Générales de Vente (CGV).</p>
+
+    <h3>2. Accès réservé aux adultes</h3>
+    <p>La Boutique est strictement réservée aux personnes âgées de <strong>21 ans et plus</strong>. En accédant, vous certifiez sur l'honneur avoir l'âge requis. Black Cherry ne saurait être tenu responsable d'un accès frauduleux par un mineur.</p>
+
+    <h3>3. Produits et prix</h3>
+    <p>Les prix sont exprimés en Francs CFA (FCFA) toutes taxes comprises (TVA 19,25 %). Toute commande passée est ferme et définitive. Black Cherry se réserve le droit de modifier les prix à tout moment.</p>
+
+    <h3>4. Commandes</h3>
+    <p>La commande est confirmée après réception du paiement complet. Un récapitulatif est transmis via WhatsApp. Black Cherry peut refuser toute commande en cas de litige précédent non résolu ou de rupture de stock.</p>
+
+    <h3>5. Livraison</h3>
+    <ul>
+      <li><strong>Douala & Yaoundé :</strong> livraison à domicile (zones A/B/C) ou retrait gratuit en point relais.</li>
+      <li><strong>Autres villes :</strong> expédition via agences partenaires (Finexs, General Express, Tradex, Buca, Touristique, Vatican) à 2 500 FCFA de base.</li>
+      <li><strong>Délai :</strong> 24–48 h ouvrables après confirmation du paiement.</li>
+    </ul>
+
+    <h3>6. Retours et remboursements</h3>
+    <p>Pour des raisons d'hygiène, les produits de lingerie, skincare ouverts et produits adultes ne peuvent être ni retournés ni échangés, sauf défaut manifeste constaté à la livraison et signalé dans les 24 h.</p>
+
+    <h3>7. Paiement</h3>
+    <p>Paiements acceptés : MTN Mobile Money, Orange Money et carte bancaire (Notch Pay / CamPay). Les données de paiement par carte sont sécurisées SSL et <strong>ne sont jamais stockées</strong> par Black Cherry.</p>
+
+    <h3>8. Confidentialité & Données personnelles</h3>
+    <p>Black Cherry collecte uniquement les données nécessaires au traitement de la commande (nom, téléphone, adresse). Ces données ne sont ni vendues ni transmises à des tiers à des fins commerciales.</p>
+    <p>Conformément au RGPD et aux politiques Google Play, vous disposez d'un droit d'accès, de rectification et de <strong>suppression de vos données</strong> via le menu « Supprimer mon compte » dans votre profil.</p>
+
+    <h3>9. Discrétion des livraisons</h3>
+    <p>Toutes les commandes sont expédiées dans un emballage neutre, sans indication du contenu ni de la marque Black Cherry visible de l'extérieur.</p>
+
+    <h3>10. Droit applicable</h3>
+    <p>Les présentes CGV sont soumises au droit camerounais. Tout litige sera porté devant les juridictions compétentes de Douala ou de Yaoundé.</p>
+
+    <p class="cgv-footer">
+      Dernière mise à jour : Janvier 2025 — Black Cherry SARL, Cameroun.<br/>
+      Contact légal : <a href="mailto:legal@blackcherry.cm">legal@blackcherry.cm</a>
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ── STYLES ─────────────────────────────────────────────────── -->
+<style>
+  .cgv-body        { padding: 20px 16px; font-size: .85rem; color: var(--text-secondary); line-height: 1.8; }
+  .cgv-body h3     { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); margin: 22px 0 8px; }
+  .cgv-body h3:first-child { margin-top: 4px; }
+  .cgv-body p      { margin-bottom: 10px; }
+  .cgv-body ul     { padding-left: 18px; margin-bottom: 10px; }
+  .cgv-body li     { margin-bottom: 5px; }
+  .cgv-body strong { color: var(--text-primary); }
+  .cgv-footer      { margin-top: 28px; font-size: .74rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 16px; line-height: 1.6; }
+  .cgv-footer a    { color: var(--gold); text-decoration: none; }
+</style>

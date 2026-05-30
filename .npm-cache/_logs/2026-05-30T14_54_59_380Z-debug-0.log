@@ -1,0 +1,749 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.3
+2 info using node@v22.18.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Ornella\Desktop\Projects\ClientsProjects\blackcherry-mobile\.npmrc
+5 silly config load:file:C:\Users\Ornella\.npmrc
+6 silly config load:file:C:\Users\Ornella\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--cache" ".\\.npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\Ornella\Desktop\Projects\ClientsProjects\blackcherry-mobile\.npm-cache\_logs\2026-05-30T14_54_59_380Z-
+10 verbose logfile C:\Users\Ornella\Desktop\Projects\ClientsProjects\blackcherry-mobile\.npm-cache\_logs\2026-05-30T14_54_59_380Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 silly idealTree buildDeps
+14 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with EACCES
+15 silly reify mark retired [
+15 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ansi-regex'
+15 silly reify ]
+16 silly reify mark retired [
+16 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ansi-styles'
+16 silly reify ]
+17 silly reify mark retired [
+17 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\astral-regex'
+17 silly reify ]
+18 silly reify mark retired [
+18 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\at-least-node'
+18 silly reify ]
+19 silly reify mark retired [
+19 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\balanced-match'
+19 silly reify ]
+20 silly reify mark retired [
+20 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\base64-js'
+20 silly reify ]
+21 silly reify mark retired [
+21 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\big-integer'
+21 silly reify ]
+22 silly reify mark retired [
+22 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\bplist-parser'
+22 silly reify ]
+23 silly reify mark retired [
+23 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\brace-expansion'
+23 silly reify ]
+24 silly reify mark retired [
+24 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\buffer-crc32'
+24 silly reify ]
+25 silly reify mark retired [
+25 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\commander'
+25 silly reify ]
+26 silly reify mark retired [
+26 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\color-name'
+26 silly reify ]
+27 silly reify mark retired [
+27 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\cross-spawn'
+27 silly reify ]
+28 silly reify mark retired [
+28 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\debug'
+28 silly reify ]
+29 silly reify mark retired [
+29 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\define-lazy-prop'
+29 silly reify ]
+30 silly reify mark retired [
+30 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\elementtree'
+30 silly reify ]
+31 silly reify mark retired [
+31 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\emoji-regex'
+31 silly reify ]
+32 silly reify mark retired [
+32 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\env-paths'
+32 silly reify ]
+33 silly reify mark retired [
+33 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fd-slicer'
+33 silly reify ]
+34 silly reify mark retired [
+34 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs-extra'
+34 silly reify ]
+35 silly reify mark retired [
+35 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs-minipass'
+35 silly reify ]
+36 silly reify mark retired [
+36 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\color-convert'
+36 silly reify ]
+37 silly reify mark retired [
+37 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs.realpath'
+37 silly reify ]
+38 silly reify mark retired [
+38 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\glob'
+38 silly reify ]
+39 silly reify mark retired [
+39 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\graceful-fs'
+39 silly reify ]
+40 silly reify mark retired [
+40 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\chownr'
+40 silly reify ]
+41 silly reify mark retired [
+41 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\inherits'
+41 silly reify ]
+42 silly reify mark retired [
+42 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ini'
+42 silly reify ]
+43 silly reify mark retired [
+43 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-docker'
+43 silly reify ]
+44 silly reify mark retired [
+44 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-fullwidth-code-point'
+44 silly reify ]
+45 silly reify mark retired [
+45 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-wsl'
+45 silly reify ]
+46 silly reify mark retired [
+46 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\isexe'
+46 silly reify ]
+47 silly reify mark retired [
+47 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\jsonfile'
+47 silly reify ]
+48 silly reify mark retired [
+48 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\kleur'
+48 silly reify ]
+49 silly reify mark retired [
+49 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\lru-cache'
+49 silly reify ]
+50 silly reify mark retired [
+50 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minimatch'
+50 silly reify ]
+51 silly reify mark retired [
+51 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minipass'
+51 silly reify ]
+52 silly reify mark retired [
+52 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minizlib'
+52 silly reify ]
+53 silly reify mark retired [
+53 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\mkdirp'
+53 silly reify ]
+54 silly reify mark retired [
+54 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ms'
+54 silly reify ]
+55 silly reify mark retired [
+55 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\native-run'
+55 silly reify ]
+56 silly reify mark retired [
+56 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\open'
+56 silly reify ]
+57 silly reify mark retired [
+57 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\path-key'
+57 silly reify ]
+58 silly reify mark retired [
+58 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\path-scurry'
+58 silly reify ]
+59 silly reify mark retired [
+59 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\pend'
+59 silly reify ]
+60 silly reify mark retired [
+60 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\plist'
+60 silly reify ]
+61 silly reify mark retired [
+61 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\prompts'
+61 silly reify ]
+62 silly reify mark retired [
+62 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\readable-stream'
+62 silly reify ]
+63 silly reify mark retired [
+63 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\rimraf'
+63 silly reify ]
+64 silly reify mark retired [
+64 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\safe-buffer'
+64 silly reify ]
+65 silly reify mark retired [
+65 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\sax'
+65 silly reify ]
+66 silly reify mark retired [
+66 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\semver'
+66 silly reify ]
+67 silly reify mark retired [
+67 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\shebang-command'
+67 silly reify ]
+68 silly reify mark retired [
+68 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\shebang-regex'
+68 silly reify ]
+69 silly reify mark retired [
+69 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\signal-exit'
+69 silly reify ]
+70 silly reify mark retired [
+70 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\sisteransi'
+70 silly reify ]
+71 silly reify mark retired [
+71 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\slice-ansi'
+71 silly reify ]
+72 silly reify mark retired [
+72 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\split2'
+72 silly reify ]
+73 silly reify mark retired [
+73 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\string-width'
+73 silly reify ]
+74 silly reify mark retired [
+74 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\string_decoder'
+74 silly reify ]
+75 silly reify mark retired [
+75 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\strip-ansi'
+75 silly reify ]
+76 silly reify mark retired [
+76 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tar'
+76 silly reify ]
+77 silly reify mark retired [
+77 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\through2'
+77 silly reify ]
+78 silly reify mark retired [
+78 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tree-kill'
+78 silly reify ]
+79 silly reify mark retired [
+79 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tslib'
+79 silly reify ]
+80 silly reify mark retired [
+80 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\undici-types'
+80 silly reify ]
+81 silly reify mark retired [
+81 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\universalify'
+81 silly reify ]
+82 silly reify mark retired [
+82 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\untildify'
+82 silly reify ]
+83 silly reify mark retired [
+83 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\util-deprecate'
+83 silly reify ]
+84 silly reify mark retired [
+84 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\which'
+84 silly reify ]
+85 silly reify mark retired [
+85 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\wrap-ansi'
+85 silly reify ]
+86 silly reify mark retired [
+86 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\xml2js'
+86 silly reify ]
+87 silly reify mark retired [
+87 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\xmlbuilder'
+87 silly reify ]
+88 silly reify mark retired [
+88 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\yallist'
+88 silly reify ]
+89 silly reify mark retired [
+89 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\yauzl'
+89 silly reify ]
+90 silly reify mark retired [
+90 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\android'
+90 silly reify ]
+91 silly reify mark retired [
+91 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\cli'
+91 silly reify ]
+92 silly reify mark retired [
+92 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\core'
+92 silly reify ]
+93 silly reify mark retired [
+93 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\splash-screen'
+93 silly reify ]
+94 silly reify mark retired [
+94 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\status-bar'
+94 silly reify ]
+95 silly reify mark retired [
+95 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\cli-framework-output'
+95 silly reify ]
+96 silly reify mark retired [
+96 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-array'
+96 silly reify ]
+97 silly reify mark retired [
+97 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-fs'
+97 silly reify ]
+98 silly reify mark retired [
+98 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-object'
+98 silly reify ]
+99 silly reify mark retired [
+99 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-process'
+99 silly reify ]
+100 silly reify mark retired [
+100 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-stream'
+100 silly reify ]
+101 silly reify mark retired [
+101 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-subprocess'
+101 silly reify ]
+102 silly reify mark retired [
+102 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-terminal'
+102 silly reify ]
+103 silly reify mark retired [
+103 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\fs-extra'
+103 silly reify ]
+104 silly reify mark retired [
+104 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\node'
+104 silly reify ]
+105 silly reify mark retired [
+105 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\slice-ansi'
+105 silly reify ]
+106 silly reify mark retired [
+106 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@xmldom\\xmldom'
+106 silly reify ]
+107 silly reify moves {
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ansi-regex': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.ansi-regex-E2KtSpga',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ansi-styles': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.ansi-styles-GhqDDWqH',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\astral-regex': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.astral-regex-Nv2PI1p5',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\at-least-node': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.at-least-node-J9JCQuGW',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\balanced-match': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.balanced-match-SoKs82yQ',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\base64-js': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.base64-js-soX6SNPC',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\big-integer': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.big-integer-LaX0Tu64',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\bplist-parser': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.bplist-parser-udxCSjro',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\brace-expansion': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.brace-expansion-rSD4hIkU',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\buffer-crc32': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.buffer-crc32-PZq1arzp',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\commander': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.commander-VxAOveRM',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\color-name': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.color-name-5QVJghbE',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\cross-spawn': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.cross-spawn-PrF20ojK',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\debug': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.debug-wNei4Bgr',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\define-lazy-prop': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.define-lazy-prop-qK7cwic8',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\elementtree': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.elementtree-uD7qE8es',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\emoji-regex': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.emoji-regex-PLwlIYTB',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\env-paths': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.env-paths-3qnCpoA7',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fd-slicer': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.fd-slicer-KX06ruRA',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs-extra': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.fs-extra-LcVaKEIG',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs-minipass': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.fs-minipass-j0Hu3QIA',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\color-convert': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.color-convert-r8N5VV1O',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\fs.realpath': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.fs.realpath-o0FZzZal',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\glob': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.glob-O9UKKOpe',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\graceful-fs': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.graceful-fs-SwDHay8e',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\chownr': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.chownr-ORmwHBv5',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\inherits': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.inherits-14CP8erA',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ini': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.ini-b2XWHb78',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-docker': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.is-docker-LjXAWAXa',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-fullwidth-code-point': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.is-fullwidth-code-point-b79RqJoo',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\is-wsl': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.is-wsl-03i8gkOz',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\isexe': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.isexe-64f97lGx',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\jsonfile': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.jsonfile-ptYbyNUl',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\kleur': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.kleur-zYe2OCIz',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\lru-cache': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.lru-cache-OuhSAtIS',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minimatch': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.minimatch-iqwHI78d',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minipass': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.minipass-zKOTO3Bz',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\minizlib': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.minizlib-BDmE0vw6',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\mkdirp': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.mkdirp-ElzTdH9s',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\ms': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.ms-ufnW6NHq',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\native-run': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.native-run-89SmoM2P',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\open': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.open-hiwLVQ9D',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\path-key': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.path-key-RrjRYKz6',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\path-scurry': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.path-scurry-snwgpiSE',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\pend': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.pend-VczBVXhK',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\plist': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.plist-mSfMizC6',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\prompts': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.prompts-Qn7HDBwH',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\readable-stream': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.readable-stream-Ru4Nv9iz',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\rimraf': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.rimraf-jNKAw08o',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\safe-buffer': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.safe-buffer-mP1HiKBE',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\sax': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.sax-r9pArZPs',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\semver': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.semver-qUy3XVUu',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\shebang-command': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.shebang-command-Knqbmmt9',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\shebang-regex': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.shebang-regex-HEuISkk4',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\signal-exit': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.signal-exit-K8Rgczjk',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\sisteransi': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.sisteransi-6DxqIy66',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\slice-ansi': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.slice-ansi-Z1PQ53qC',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\split2': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.split2-8yzn1v1B',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\string-width': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.string-width-VfoAalEl',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\string_decoder': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.string_decoder-2KpyE8Zj',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\strip-ansi': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.strip-ansi-uPRVY7dK',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tar': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.tar-NucDnLEk',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\through2': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.through2-eSts49UW',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tree-kill': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.tree-kill-tEh5Wk2o',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\tslib': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.tslib-GI1BitUD',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\undici-types': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.undici-types-wiNLfjG1',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\universalify': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.universalify-9YXp9fol',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\untildify': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.untildify-ts7hgZFm',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\util-deprecate': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.util-deprecate-PWwFcbov',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\which': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.which-nc8YXtnu',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\wrap-ansi': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.wrap-ansi-jYeTCMa4',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\xml2js': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.xml2js-4u8TZhNE',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\xmlbuilder': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.xmlbuilder-oRDfPrdN',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\yallist': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.yallist-AsfWnVTH',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\yauzl': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\.yauzl-lXFvdhSd',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\android': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\.android-iAWf3y0W',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\cli': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\.cli-SQ3kMZDe',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\core': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\.core-YPY14hGe',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\splash-screen': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\.splash-screen-u9MzB4j3',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\status-bar': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@capacitor\\.status-bar-P4TDsiPq',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\cli-framework-output': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.cli-framework-output-a23EMNWJ',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-array': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-array-6klJ1GyL',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-fs': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-fs-BoYgz1Av',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-object': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-object-OpWWoKkY',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-process': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-process-ofLUKv3n',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-stream': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-stream-xQxPhBJo',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-subprocess': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-subprocess-sUfUScQa',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\utils-terminal': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@ionic\\.utils-terminal-u7IwKA4A',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\fs-extra': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\.fs-extra-gFexAM5z',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\node': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\.node-DmLWdLh1',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\slice-ansi': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@types\\.slice-ansi-lw0XLoRx',
+107 silly reify   'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@xmldom\\xmldom': 'C:\\Users\\Ornella\\Desktop\\Projects\\ClientsProjects\\blackcherry-mobile\\node_modules\\@xmldom\\.xmldom-KI5x0wqQ'
+107 silly reify }
+108 silly audit bulk request {
+108 silly audit   '@capacitor/android': [ '6.2.1' ],
+108 silly audit   '@capacitor/cli': [ '6.2.1' ],
+108 silly audit   '@capacitor/core': [ '6.2.1' ],
+108 silly audit   '@capacitor/splash-screen': [ '6.0.4' ],
+108 silly audit   '@capacitor/status-bar': [ '6.0.3' ],
+108 silly audit   '@ionic/cli-framework-output': [ '2.2.8' ],
+108 silly audit   '@ionic/utils-array': [ '2.1.5' ],
+108 silly audit   '@ionic/utils-fs': [ '3.1.7', '3.1.6' ],
+108 silly audit   '@ionic/utils-object': [ '2.1.5' ],
+108 silly audit   '@ionic/utils-process': [ '2.1.10' ],
+108 silly audit   '@ionic/utils-terminal': [ '2.3.3', '2.3.5' ],
+108 silly audit   '@ionic/utils-stream': [ '3.1.5' ],
+108 silly audit   '@ionic/utils-subprocess': [ '2.1.11' ],
+108 silly audit   '@types/fs-extra': [ '8.1.5' ],
+108 silly audit   '@types/node': [ '25.9.1' ],
+108 silly audit   '@types/slice-ansi': [ '4.0.0' ],
+108 silly audit   '@xmldom/xmldom': [ '0.9.10' ],
+108 silly audit   'ansi-regex': [ '5.0.1' ],
+108 silly audit   'ansi-styles': [ '4.3.0' ],
+108 silly audit   'astral-regex': [ '2.0.0' ],
+108 silly audit   'at-least-node': [ '1.0.0' ],
+108 silly audit   'balanced-match': [ '1.0.2' ],
+108 silly audit   'base64-js': [ '1.5.1' ],
+108 silly audit   'big-integer': [ '1.6.52' ],
+108 silly audit   'bplist-parser': [ '0.3.2' ],
+108 silly audit   'brace-expansion': [ '2.1.1' ],
+108 silly audit   'buffer-crc32': [ '0.2.13' ],
+108 silly audit   chownr: [ '2.0.0' ],
+108 silly audit   'color-convert': [ '2.0.1' ],
+108 silly audit   'color-name': [ '1.1.4' ],
+108 silly audit   commander: [ '9.5.0' ],
+108 silly audit   'cross-spawn': [ '7.0.6' ],
+108 silly audit   debug: [ '4.4.3' ],
+108 silly audit   'define-lazy-prop': [ '2.0.0' ],
+108 silly audit   elementtree: [ '0.1.7' ],
+108 silly audit   'emoji-regex': [ '8.0.0' ],
+108 silly audit   'env-paths': [ '2.2.1' ],
+108 silly audit   'fd-slicer': [ '1.1.0' ],
+108 silly audit   'fs-extra': [ '9.1.0' ],
+108 silly audit   'fs-minipass': [ '2.1.0' ],
+108 silly audit   minipass: [ '3.3.6', '4.2.8', '7.1.3', '5.0.0' ],
+108 silly audit   'fs.realpath': [ '1.0.0' ],
+108 silly audit   glob: [ '9.3.5' ],
+108 silly audit   'graceful-fs': [ '4.2.11' ],
+108 silly audit   inherits: [ '2.0.4' ],
+108 silly audit   ini: [ '4.1.3' ],
+108 silly audit   'is-docker': [ '2.2.1' ],
+108 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+108 silly audit   'is-wsl': [ '2.2.0' ],
+108 silly audit   isexe: [ '2.0.0' ],
+108 silly audit   jsonfile: [ '6.2.1' ],
+108 silly audit   kleur: [ '4.1.5', '3.0.3' ],
+108 silly audit   'lru-cache': [ '10.4.3' ],
+108 silly audit   minimatch: [ '8.0.7' ],
+108 silly audit   minizlib: [ '2.1.2' ],
+108 silly audit   mkdirp: [ '1.0.4' ],
+108 silly audit   ms: [ '2.1.3' ],
+108 silly audit   'native-run': [ '2.0.3' ],
+108 silly audit   open: [ '8.4.2' ],
+108 silly audit   'path-key': [ '3.1.1' ],
+108 silly audit   'path-scurry': [ '1.11.1' ],
+108 silly audit   pend: [ '1.2.0' ],
+108 silly audit   plist: [ '3.1.1' ],
+108 silly audit   prompts: [ '2.4.2' ],
+108 silly audit   'readable-stream': [ '3.6.2' ],
+108 silly audit   rimraf: [ '4.4.1' ],
+108 silly audit   'safe-buffer': [ '5.2.1' ],
+108 silly audit   sax: [ '1.1.4' ],
+108 silly audit   semver: [ '7.8.1' ],
+108 silly audit   'shebang-command': [ '2.0.0' ],
+108 silly audit   'shebang-regex': [ '3.0.0' ],
+108 silly audit   'signal-exit': [ '3.0.7' ],
+108 silly audit   sisteransi: [ '1.0.5' ],
+108 silly audit   'slice-ansi': [ '4.0.0' ],
+108 silly audit   split2: [ '4.2.0' ],
+108 silly audit   string_decoder: [ '1.3.0' ],
+108 silly audit   'string-width': [ '4.2.3' ],
+108 silly audit   'strip-ansi': [ '6.0.1' ],
+108 silly audit   tar: [ '6.2.1' ],
+108 silly audit   through2: [ '4.0.2' ],
+108 silly audit   'tree-kill': [ '1.2.2' ],
+108 silly audit   tslib: [ '2.8.1' ],
+108 silly audit   'undici-types': [ '7.24.6' ],
+108 silly audit   universalify: [ '2.0.1' ],
+108 silly audit   untildify: [ '4.0.0' ],
+108 silly audit   'util-deprecate': [ '1.0.2' ],
+108 silly audit   which: [ '2.0.2' ],
+108 silly audit   'wrap-ansi': [ '7.0.0' ],
+108 silly audit   xml2js: [ '0.5.0' ],
+108 silly audit   xmlbuilder: [ '11.0.1', '15.1.1' ],
+108 silly audit   yallist: [ '4.0.0' ],
+108 silly audit   yauzl: [ '2.10.0' ]
+108 silly audit }
+109 http cache @xmldom/xmldom@https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz 1ms (cache hit)
+110 http cache @types/slice-ansi@https://registry.npmjs.org/@types/slice-ansi/-/slice-ansi-4.0.0.tgz 0ms (cache hit)
+111 http cache @types/node@https://registry.npmjs.org/@types/node/-/node-25.9.1.tgz 0ms (cache hit)
+112 http cache @types/fs-extra@https://registry.npmjs.org/@types/fs-extra/-/fs-extra-8.1.5.tgz 0ms (cache hit)
+113 http cache @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.5.tgz 0ms (cache hit)
+114 http cache @ionic/utils-subprocess@https://registry.npmjs.org/@ionic/utils-subprocess/-/utils-subprocess-2.1.11.tgz 0ms (cache hit)
+115 http cache @ionic/utils-stream@https://registry.npmjs.org/@ionic/utils-stream/-/utils-stream-3.1.5.tgz 0ms (cache hit)
+116 http cache @ionic/utils-object@https://registry.npmjs.org/@ionic/utils-object/-/utils-object-2.1.5.tgz 0ms (cache hit)
+117 http cache @ionic/utils-process@https://registry.npmjs.org/@ionic/utils-process/-/utils-process-2.1.10.tgz 0ms (cache hit)
+118 http cache @ionic/utils-fs@https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.7.tgz 0ms (cache hit)
+119 http cache @ionic/utils-array@https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz 0ms (cache hit)
+120 http cache @ionic/cli-framework-output@https://registry.npmjs.org/@ionic/cli-framework-output/-/cli-framework-output-2.2.8.tgz 0ms (cache hit)
+121 http cache @capacitor/status-bar@https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-6.0.3.tgz 0ms (cache hit)
+122 http cache @capacitor/splash-screen@https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-6.0.4.tgz 0ms (cache hit)
+123 http cache @capacitor/core@https://registry.npmjs.org/@capacitor/core/-/core-6.2.1.tgz 0ms (cache hit)
+124 http cache @capacitor/cli@https://registry.npmjs.org/@capacitor/cli/-/cli-6.2.1.tgz 0ms (cache hit)
+125 http cache @capacitor/android@https://registry.npmjs.org/@capacitor/android/-/android-6.2.1.tgz 0ms (cache hit)
+126 http cache yauzl@https://registry.npmjs.org/yauzl/-/yauzl-2.10.0.tgz 0ms (cache hit)
+127 http cache yallist@https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz 0ms (cache hit)
+128 http cache xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz 0ms (cache hit)
+129 http cache xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.5.0.tgz 0ms (cache hit)
+130 http cache wrap-ansi@https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz 0ms (cache hit)
+131 http cache which@https://registry.npmjs.org/which/-/which-2.0.2.tgz 0ms (cache hit)
+132 http cache util-deprecate@https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz 0ms (cache hit)
+133 http cache untildify@https://registry.npmjs.org/untildify/-/untildify-4.0.0.tgz 0ms (cache hit)
+134 http cache universalify@https://registry.npmjs.org/universalify/-/universalify-2.0.1.tgz 1ms (cache hit)
+135 http cache undici-types@https://registry.npmjs.org/undici-types/-/undici-types-7.24.6.tgz 0ms (cache hit)
+136 http cache tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz 0ms (cache hit)
+137 http cache tree-kill@https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz 0ms (cache hit)
+138 http cache through2@https://registry.npmjs.org/through2/-/through2-4.0.2.tgz 0ms (cache hit)
+139 http cache tar@https://registry.npmjs.org/tar/-/tar-6.2.1.tgz 0ms (cache hit)
+140 http cache strip-ansi@https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz 0ms (cache hit)
+141 http cache string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz 0ms (cache hit)
+142 http cache string-width@https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz 0ms (cache hit)
+143 http cache split2@https://registry.npmjs.org/split2/-/split2-4.2.0.tgz 0ms (cache hit)
+144 http cache slice-ansi@https://registry.npmjs.org/slice-ansi/-/slice-ansi-4.0.0.tgz 0ms (cache hit)
+145 http cache sisteransi@https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz 0ms (cache hit)
+146 http cache signal-exit@https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz 0ms (cache hit)
+147 http cache shebang-regex@https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz 0ms (cache hit)
+148 http cache shebang-command@https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz 0ms (cache hit)
+149 http cache semver@https://registry.npmjs.org/semver/-/semver-7.8.1.tgz 0ms (cache hit)
+150 http cache sax@https://registry.npmjs.org/sax/-/sax-1.1.4.tgz 0ms (cache hit)
+151 http cache safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz 0ms (cache hit)
+152 http cache rimraf@https://registry.npmjs.org/rimraf/-/rimraf-4.4.1.tgz 0ms (cache hit)
+153 http cache readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz 0ms (cache hit)
+154 http cache prompts@https://registry.npmjs.org/prompts/-/prompts-2.4.2.tgz 0ms (cache hit)
+155 http cache plist@https://registry.npmjs.org/plist/-/plist-3.1.1.tgz 0ms (cache hit)
+156 http cache pend@https://registry.npmjs.org/pend/-/pend-1.2.0.tgz 0ms (cache hit)
+157 http cache path-scurry@https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz 0ms (cache hit)
+158 http cache path-key@https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz 0ms (cache hit)
+159 http cache open@https://registry.npmjs.org/open/-/open-8.4.2.tgz 0ms (cache hit)
+160 http cache native-run@https://registry.npmjs.org/native-run/-/native-run-2.0.3.tgz 0ms (cache hit)
+161 http cache ms@https://registry.npmjs.org/ms/-/ms-2.1.3.tgz 0ms (cache hit)
+162 http cache mkdirp@https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz 0ms (cache hit)
+163 http cache minizlib@https://registry.npmjs.org/minizlib/-/minizlib-2.1.2.tgz 0ms (cache hit)
+164 http cache minipass@https://registry.npmjs.org/minipass/-/minipass-4.2.8.tgz 0ms (cache hit)
+165 http cache minimatch@https://registry.npmjs.org/minimatch/-/minimatch-8.0.7.tgz 0ms (cache hit)
+166 http cache lru-cache@https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz 0ms (cache hit)
+167 http cache kleur@https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz 0ms (cache hit)
+168 http cache jsonfile@https://registry.npmjs.org/jsonfile/-/jsonfile-6.2.1.tgz 0ms (cache hit)
+169 http cache isexe@https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz 0ms (cache hit)
+170 http cache is-wsl@https://registry.npmjs.org/is-wsl/-/is-wsl-2.2.0.tgz 0ms (cache hit)
+171 http cache is-fullwidth-code-point@https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz 0ms (cache hit)
+172 http cache is-docker@https://registry.npmjs.org/is-docker/-/is-docker-2.2.1.tgz 0ms (cache hit)
+173 http cache ini@https://registry.npmjs.org/ini/-/ini-4.1.3.tgz 0ms (cache hit)
+174 http cache inherits@https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz 0ms (cache hit)
+175 http cache chownr@https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz 0ms (cache hit)
+176 http cache graceful-fs@https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz 0ms (cache hit)
+177 http cache glob@https://registry.npmjs.org/glob/-/glob-9.3.5.tgz 0ms (cache hit)
+178 http cache fs.realpath@https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz 0ms (cache hit)
+179 http cache color-convert@https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz 0ms (cache hit)
+180 http cache fs-minipass@https://registry.npmjs.org/fs-minipass/-/fs-minipass-2.1.0.tgz 0ms (cache hit)
+181 http cache fs-extra@https://registry.npmjs.org/fs-extra/-/fs-extra-9.1.0.tgz 0ms (cache hit)
+182 http cache fd-slicer@https://registry.npmjs.org/fd-slicer/-/fd-slicer-1.1.0.tgz 0ms (cache hit)
+183 http cache env-paths@https://registry.npmjs.org/env-paths/-/env-paths-2.2.1.tgz 0ms (cache hit)
+184 http cache emoji-regex@https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz 0ms (cache hit)
+185 http cache elementtree@https://registry.npmjs.org/elementtree/-/elementtree-0.1.7.tgz 0ms (cache hit)
+186 http cache define-lazy-prop@https://registry.npmjs.org/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz 0ms (cache hit)
+187 http cache debug@https://registry.npmjs.org/debug/-/debug-4.4.3.tgz 0ms (cache hit)
+188 http cache cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz 0ms (cache hit)
+189 http cache color-name@https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz 0ms (cache hit)
+190 http cache commander@https://registry.npmjs.org/commander/-/commander-9.5.0.tgz 0ms (cache hit)
+191 http cache buffer-crc32@https://registry.npmjs.org/buffer-crc32/-/buffer-crc32-0.2.13.tgz 0ms (cache hit)
+192 http cache brace-expansion@https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.1.tgz 0ms (cache hit)
+193 http cache bplist-parser@https://registry.npmjs.org/bplist-parser/-/bplist-parser-0.3.2.tgz 0ms (cache hit)
+194 http cache big-integer@https://registry.npmjs.org/big-integer/-/big-integer-1.6.52.tgz 0ms (cache hit)
+195 http cache base64-js@https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz 0ms (cache hit)
+196 http cache balanced-match@https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz 0ms (cache hit)
+197 http cache at-least-node@https://registry.npmjs.org/at-least-node/-/at-least-node-1.0.0.tgz 0ms (cache hit)
+198 http cache astral-regex@https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz 0ms (cache hit)
+199 http cache ansi-styles@https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz 0ms (cache hit)
+200 http cache ansi-regex@https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz 0ms (cache hit)
+201 http cache @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.3.tgz 0ms (cache hit)
+202 http cache @ionic/utils-fs@https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.6.tgz 0ms (cache hit)
+203 http cache @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.3.tgz 0ms (cache hit)
+204 http cache xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-11.0.1.tgz 0ms (cache hit)
+205 http cache minipass@https://registry.npmjs.org/minipass/-/minipass-5.0.0.tgz 0ms (cache hit)
+206 http cache kleur@https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz 0ms (cache hit)
+207 http cache minipass@https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz 0ms (cache hit)
+208 http cache minipass@https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz 0ms (cache hit)
+209 silly tarball no local data for @xmldom/xmldom@https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz. Extracting by manifest.
+210 http cache minipass@https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz 0ms (cache hit)
+211 silly tarball no local data for @types/slice-ansi@https://registry.npmjs.org/@types/slice-ansi/-/slice-ansi-4.0.0.tgz. Extracting by manifest.
+212 silly tarball no local data for @types/node@https://registry.npmjs.org/@types/node/-/node-25.9.1.tgz. Extracting by manifest.
+213 silly tarball no local data for @types/fs-extra@https://registry.npmjs.org/@types/fs-extra/-/fs-extra-8.1.5.tgz. Extracting by manifest.
+214 silly tarball no local data for @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.5.tgz. Extracting by manifest.
+215 silly tarball no local data for @ionic/utils-subprocess@https://registry.npmjs.org/@ionic/utils-subprocess/-/utils-subprocess-2.1.11.tgz. Extracting by manifest.
+216 silly tarball no local data for @ionic/utils-stream@https://registry.npmjs.org/@ionic/utils-stream/-/utils-stream-3.1.5.tgz. Extracting by manifest.
+217 silly tarball no local data for @ionic/utils-object@https://registry.npmjs.org/@ionic/utils-object/-/utils-object-2.1.5.tgz. Extracting by manifest.
+218 silly tarball no local data for @ionic/utils-process@https://registry.npmjs.org/@ionic/utils-process/-/utils-process-2.1.10.tgz. Extracting by manifest.
+219 silly tarball no local data for @ionic/utils-fs@https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.7.tgz. Extracting by manifest.
+220 silly tarball no local data for @ionic/utils-array@https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz. Extracting by manifest.
+221 silly tarball no local data for @ionic/cli-framework-output@https://registry.npmjs.org/@ionic/cli-framework-output/-/cli-framework-output-2.2.8.tgz. Extracting by manifest.
+222 silly tarball no local data for @capacitor/status-bar@https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-6.0.3.tgz. Extracting by manifest.
+223 silly tarball no local data for @capacitor/splash-screen@https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-6.0.4.tgz. Extracting by manifest.
+224 silly tarball no local data for @capacitor/core@https://registry.npmjs.org/@capacitor/core/-/core-6.2.1.tgz. Extracting by manifest.
+225 silly tarball no local data for @capacitor/cli@https://registry.npmjs.org/@capacitor/cli/-/cli-6.2.1.tgz. Extracting by manifest.
+226 silly tarball no local data for @capacitor/android@https://registry.npmjs.org/@capacitor/android/-/android-6.2.1.tgz. Extracting by manifest.
+227 silly tarball no local data for yauzl@https://registry.npmjs.org/yauzl/-/yauzl-2.10.0.tgz. Extracting by manifest.
+228 silly tarball no local data for yallist@https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz. Extracting by manifest.
+229 silly tarball no local data for xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz. Extracting by manifest.
+230 silly tarball no local data for xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.5.0.tgz. Extracting by manifest.
+231 silly tarball no local data for wrap-ansi@https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz. Extracting by manifest.
+232 silly tarball no local data for which@https://registry.npmjs.org/which/-/which-2.0.2.tgz. Extracting by manifest.
+233 silly tarball no local data for util-deprecate@https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz. Extracting by manifest.
+234 silly tarball no local data for untildify@https://registry.npmjs.org/untildify/-/untildify-4.0.0.tgz. Extracting by manifest.
+235 silly tarball no local data for universalify@https://registry.npmjs.org/universalify/-/universalify-2.0.1.tgz. Extracting by manifest.
+236 silly tarball no local data for undici-types@https://registry.npmjs.org/undici-types/-/undici-types-7.24.6.tgz. Extracting by manifest.
+237 silly tarball no local data for tslib@https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz. Extracting by manifest.
+238 silly tarball no local data for tree-kill@https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz. Extracting by manifest.
+239 silly tarball no local data for through2@https://registry.npmjs.org/through2/-/through2-4.0.2.tgz. Extracting by manifest.
+240 silly tarball no local data for tar@https://registry.npmjs.org/tar/-/tar-6.2.1.tgz. Extracting by manifest.
+241 silly tarball no local data for strip-ansi@https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz. Extracting by manifest.
+242 silly tarball no local data for string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz. Extracting by manifest.
+243 silly tarball no local data for string-width@https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz. Extracting by manifest.
+244 silly tarball no local data for split2@https://registry.npmjs.org/split2/-/split2-4.2.0.tgz. Extracting by manifest.
+245 silly tarball no local data for slice-ansi@https://registry.npmjs.org/slice-ansi/-/slice-ansi-4.0.0.tgz. Extracting by manifest.
+246 silly tarball no local data for sisteransi@https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz. Extracting by manifest.
+247 silly tarball no local data for signal-exit@https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz. Extracting by manifest.
+248 silly tarball no local data for shebang-regex@https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz. Extracting by manifest.
+249 silly tarball no local data for shebang-command@https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz. Extracting by manifest.
+250 silly tarball no local data for semver@https://registry.npmjs.org/semver/-/semver-7.8.1.tgz. Extracting by manifest.
+251 silly tarball no local data for sax@https://registry.npmjs.org/sax/-/sax-1.1.4.tgz. Extracting by manifest.
+252 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz. Extracting by manifest.
+253 silly tarball no local data for rimraf@https://registry.npmjs.org/rimraf/-/rimraf-4.4.1.tgz. Extracting by manifest.
+254 silly tarball no local data for readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz. Extracting by manifest.
+255 silly tarball no local data for prompts@https://registry.npmjs.org/prompts/-/prompts-2.4.2.tgz. Extracting by manifest.
+256 silly tarball no local data for plist@https://registry.npmjs.org/plist/-/plist-3.1.1.tgz. Extracting by manifest.
+257 silly tarball no local data for pend@https://registry.npmjs.org/pend/-/pend-1.2.0.tgz. Extracting by manifest.
+258 silly tarball no local data for path-scurry@https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz. Extracting by manifest.
+259 silly tarball no local data for native-run@https://registry.npmjs.org/native-run/-/native-run-2.0.3.tgz. Extracting by manifest.
+260 silly tarball no local data for ms@https://registry.npmjs.org/ms/-/ms-2.1.3.tgz. Extracting by manifest.
+261 silly tarball no local data for open@https://registry.npmjs.org/open/-/open-8.4.2.tgz. Extracting by manifest.
+262 silly tarball no local data for path-key@https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz. Extracting by manifest.
+263 silly tarball no local data for mkdirp@https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz. Extracting by manifest.
+264 silly tarball no local data for minizlib@https://registry.npmjs.org/minizlib/-/minizlib-2.1.2.tgz. Extracting by manifest.
+265 silly tarball no local data for minipass@https://registry.npmjs.org/minipass/-/minipass-4.2.8.tgz. Extracting by manifest.
+266 silly tarball no local data for minimatch@https://registry.npmjs.org/minimatch/-/minimatch-8.0.7.tgz. Extracting by manifest.
+267 silly tarball no local data for lru-cache@https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz. Extracting by manifest.
+268 silly tarball no local data for kleur@https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz. Extracting by manifest.
+269 silly tarball no local data for jsonfile@https://registry.npmjs.org/jsonfile/-/jsonfile-6.2.1.tgz. Extracting by manifest.
+270 silly tarball no local data for isexe@https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz. Extracting by manifest.
+271 silly tarball no local data for is-wsl@https://registry.npmjs.org/is-wsl/-/is-wsl-2.2.0.tgz. Extracting by manifest.
+272 silly tarball no local data for is-fullwidth-code-point@https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz. Extracting by manifest.
+273 silly tarball no local data for is-docker@https://registry.npmjs.org/is-docker/-/is-docker-2.2.1.tgz. Extracting by manifest.
+274 silly tarball no local data for ini@https://registry.npmjs.org/ini/-/ini-4.1.3.tgz. Extracting by manifest.
+275 silly tarball no local data for inherits@https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz. Extracting by manifest.
+276 silly tarball no local data for chownr@https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz. Extracting by manifest.
+277 silly tarball no local data for graceful-fs@https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz. Extracting by manifest.
+278 silly tarball no local data for glob@https://registry.npmjs.org/glob/-/glob-9.3.5.tgz. Extracting by manifest.
+279 silly tarball no local data for fs.realpath@https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz. Extracting by manifest.
+280 silly tarball no local data for color-convert@https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz. Extracting by manifest.
+281 silly tarball no local data for fs-minipass@https://registry.npmjs.org/fs-minipass/-/fs-minipass-2.1.0.tgz. Extracting by manifest.
+282 silly tarball no local data for fs-extra@https://registry.npmjs.org/fs-extra/-/fs-extra-9.1.0.tgz. Extracting by manifest.
+283 silly tarball no local data for fd-slicer@https://registry.npmjs.org/fd-slicer/-/fd-slicer-1.1.0.tgz. Extracting by manifest.
+284 silly tarball no local data for env-paths@https://registry.npmjs.org/env-paths/-/env-paths-2.2.1.tgz. Extracting by manifest.
+285 silly tarball no local data for emoji-regex@https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz. Extracting by manifest.
+286 silly tarball no local data for elementtree@https://registry.npmjs.org/elementtree/-/elementtree-0.1.7.tgz. Extracting by manifest.
+287 silly tarball no local data for define-lazy-prop@https://registry.npmjs.org/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz. Extracting by manifest.
+288 silly tarball no local data for debug@https://registry.npmjs.org/debug/-/debug-4.4.3.tgz. Extracting by manifest.
+289 silly tarball no local data for cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz. Extracting by manifest.
+290 silly tarball no local data for color-name@https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz. Extracting by manifest.
+291 silly tarball no local data for commander@https://registry.npmjs.org/commander/-/commander-9.5.0.tgz. Extracting by manifest.
+292 silly tarball no local data for buffer-crc32@https://registry.npmjs.org/buffer-crc32/-/buffer-crc32-0.2.13.tgz. Extracting by manifest.
+293 silly tarball no local data for brace-expansion@https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.1.tgz. Extracting by manifest.
+294 silly tarball no local data for bplist-parser@https://registry.npmjs.org/bplist-parser/-/bplist-parser-0.3.2.tgz. Extracting by manifest.
+295 silly tarball no local data for big-integer@https://registry.npmjs.org/big-integer/-/big-integer-1.6.52.tgz. Extracting by manifest.
+296 silly tarball no local data for base64-js@https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz. Extracting by manifest.
+297 silly tarball no local data for balanced-match@https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz. Extracting by manifest.
+298 silly tarball no local data for at-least-node@https://registry.npmjs.org/at-least-node/-/at-least-node-1.0.0.tgz. Extracting by manifest.
+299 silly tarball no local data for astral-regex@https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz. Extracting by manifest.
+300 silly tarball no local data for ansi-styles@https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz. Extracting by manifest.
+301 silly tarball no local data for ansi-regex@https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz. Extracting by manifest.
+302 silly tarball no local data for @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.3.tgz. Extracting by manifest.
+303 silly tarball no local data for @ionic/utils-fs@https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.6.tgz. Extracting by manifest.
+304 silly tarball no local data for @ionic/utils-terminal@https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.3.tgz. Extracting by manifest.
+305 silly tarball no local data for xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-11.0.1.tgz. Extracting by manifest.
+306 silly tarball no local data for minipass@https://registry.npmjs.org/minipass/-/minipass-5.0.0.tgz. Extracting by manifest.
+307 silly tarball no local data for kleur@https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz. Extracting by manifest.
+308 silly tarball no local data for minipass@https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz. Extracting by manifest.
+309 silly tarball no local data for minipass@https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz. Extracting by manifest.
+310 silly tarball no local data for minipass@https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz. Extracting by manifest.
+311 silly audit bulk request failed undefined
+312 http fetch GET https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz attempt 1 failed with EACCES
+313 http fetch GET https://registry.npmjs.org/@types/slice-ansi/-/slice-ansi-4.0.0.tgz attempt 1 failed with EACCES
+314 http fetch GET https://registry.npmjs.org/@types/node/-/node-25.9.1.tgz attempt 1 failed with EACCES
+315 http fetch GET https://registry.npmjs.org/@types/fs-extra/-/fs-extra-8.1.5.tgz attempt 1 failed with EACCES
+316 http fetch GET https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.5.tgz attempt 1 failed with EACCES
+317 http fetch GET https://registry.npmjs.org/@ionic/utils-subprocess/-/utils-subprocess-2.1.11.tgz attempt 1 failed with EACCES
+318 http fetch GET https://registry.npmjs.org/@ionic/utils-stream/-/utils-stream-3.1.5.tgz attempt 1 failed with EACCES
+319 http fetch GET https://registry.npmjs.org/@ionic/utils-object/-/utils-object-2.1.5.tgz attempt 1 failed with EACCES
+320 http fetch GET https://registry.npmjs.org/@ionic/utils-process/-/utils-process-2.1.10.tgz attempt 1 failed with EACCES
+321 http fetch GET https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.7.tgz attempt 1 failed with EACCES
+322 http fetch GET https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz attempt 1 failed with EACCES
+323 http fetch GET https://registry.npmjs.org/@ionic/cli-framework-output/-/cli-framework-output-2.2.8.tgz attempt 1 failed with EACCES
+324 http fetch GET https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-6.0.3.tgz attempt 1 failed with EACCES
+325 http fetch GET https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-6.0.4.tgz attempt 1 failed with EACCES
+326 verbose audit error FetchError: request to https://registry.npmjs.org/-/npm/v1/security/audits/quick failed, reason: 
+326 verbose audit error     at ClientRequest.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)
+326 verbose audit error     at ClientRequest.emit (node:events:518:28)
+326 verbose audit error     at emitErrorEvent (node:_http_client:104:11)
+326 verbose audit error     at _destroy (node:_http_client:898:9)
+326 verbose audit error     at onSocketNT (node:_http_client:918:5)
+326 verbose audit error     at process.processTicksAndRejections (node:internal/process/task_queues:91:21) {
+326 verbose audit error   code: 'EACCES',
+326 verbose audit error   errno: 'EACCES',
+326 verbose audit error   type: 'system'
+326 verbose audit error }
+327 silly audit error undefined
+328 silly audit report null
+329 http fetch GET https://registry.npmjs.org/npm attempt 2 failed with EACCES
+330 http fetch GET https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz attempt 2 failed with EACCES
+331 http fetch GET https://registry.npmjs.org/@types/slice-ansi/-/slice-ansi-4.0.0.tgz attempt 2 failed with EACCES
+332 http fetch GET https://registry.npmjs.org/@types/node/-/node-25.9.1.tgz attempt 2 failed with EACCES
+333 http fetch GET https://registry.npmjs.org/@types/fs-extra/-/fs-extra-8.1.5.tgz attempt 2 failed with EACCES
+334 http fetch GET https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.5.tgz attempt 2 failed with EACCES
+335 http fetch GET https://registry.npmjs.org/@ionic/utils-subprocess/-/utils-subprocess-2.1.11.tgz attempt 2 failed with EACCES
+336 http fetch GET https://registry.npmjs.org/@ionic/utils-stream/-/utils-stream-3.1.5.tgz attempt 2 failed with EACCES
+337 http fetch GET https://registry.npmjs.org/@ionic/utils-object/-/utils-object-2.1.5.tgz attempt 2 failed with EACCES
+338 http fetch GET https://registry.npmjs.org/@ionic/utils-process/-/utils-process-2.1.10.tgz attempt 2 failed with EACCES
+339 http fetch GET https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.7.tgz attempt 2 failed with EACCES
+340 http fetch GET https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz attempt 2 failed with EACCES
+341 http fetch GET https://registry.npmjs.org/@ionic/cli-framework-output/-/cli-framework-output-2.2.8.tgz attempt 2 failed with EACCES
+342 http fetch GET https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-6.0.3.tgz attempt 2 failed with EACCES
+343 http fetch GET https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-6.0.4.tgz attempt 2 failed with EACCES
+344 http fetch GET https://registry.npmjs.org/npm attempt 3 failed with EACCES
+345 http fetch GET https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz attempt 3 failed with EACCES
+346 http fetch GET https://registry.npmjs.org/@types/slice-ansi/-/slice-ansi-4.0.0.tgz attempt 3 failed with EACCES
+347 http fetch GET https://registry.npmjs.org/@types/node/-/node-25.9.1.tgz attempt 3 failed with EACCES
+348 http fetch GET https://registry.npmjs.org/@types/fs-extra/-/fs-extra-8.1.5.tgz attempt 3 failed with EACCES
+349 http fetch GET https://registry.npmjs.org/@ionic/utils-terminal/-/utils-terminal-2.3.5.tgz attempt 3 failed with EACCES
+350 http fetch GET https://registry.npmjs.org/@ionic/utils-subprocess/-/utils-subprocess-2.1.11.tgz attempt 3 failed with EACCES
+351 http fetch GET https://registry.npmjs.org/@ionic/utils-stream/-/utils-stream-3.1.5.tgz attempt 3 failed with EACCES
+352 http fetch GET https://registry.npmjs.org/@ionic/utils-object/-/utils-object-2.1.5.tgz attempt 3 failed with EACCES
+353 http fetch GET https://registry.npmjs.org/@ionic/utils-process/-/utils-process-2.1.10.tgz attempt 3 failed with EACCES
+354 http fetch GET https://registry.npmjs.org/@ionic/utils-fs/-/utils-fs-3.1.7.tgz attempt 3 failed with EACCES
+355 http fetch GET https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz attempt 3 failed with EACCES
+356 http fetch GET https://registry.npmjs.org/@ionic/cli-framework-output/-/cli-framework-output-2.2.8.tgz attempt 3 failed with EACCES
+357 http fetch GET https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-6.0.3.tgz attempt 3 failed with EACCES
+358 http fetch GET https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-6.0.4.tgz attempt 3 failed with EACCES
+359 verbose cwd C:\Users\Ornella\Desktop\Projects\ClientsProjects\blackcherry-mobile
+360 verbose os Windows_NT 10.0.19045
+361 verbose node v22.18.0
+362 verbose npm  v10.9.3
+363 error Exit handler never called!
+364 error This is an error with npm itself. Please report this error at:
+365 error   <https://github.com/npm/cli/issues>
+366 verbose exit 1
+367 verbose code 1
+368 error A complete log of this run can be found in: C:\Users\Ornella\Desktop\Projects\ClientsProjects\blackcherry-mobile\.npm-cache\_logs\2026-05-30T14_54_59_380Z-debug-0.log

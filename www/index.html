@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="theme-color" content="#121212"/>
+  <meta name="description" content="Black Cherry — Intimately Yours. Lingerie, Skincare & Bien-être."/>
+  <title>Black Cherry — Intimately Yours</title>
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+
+  <!-- Styles globaux (tokens → base → composants) -->
+  <link rel="stylesheet" href="css/tokens.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     SPLASH
+══════════════════════════════════════════════════════════ -->
+<div id="splash" style="position:fixed;inset:0;z-index:999;background:radial-gradient(ellipse at 30% 40%,var(--cherry-mid),var(--carbon) 60%);display:flex;flex-direction:column;align-items:center;justify-content:center">
+  <svg style="width:88px;height:88px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite" viewBox="0 0 100 100" fill="none">
+    <style>@keyframes splashPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 12px rgba(212,175,55,.3))}50%{transform:scale(1.05);filter:drop-shadow(0 0 28px rgba(212,175,55,.65))}}</style>
+    <circle cx="36" cy="62" r="22" fill="#3D0C23" stroke="#D4AF37" stroke-width="1.5"/>
+    <circle cx="64" cy="68" r="18" fill="#2C001E" stroke="#D4AF37" stroke-width="1.5"/>
+    <path d="M36 40 Q50 10 70 18 Q62 30 64 50" stroke="#D4AF37" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M64 50 Q58 35 55 20" stroke="#4A6630" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="56" cy="18" rx="8" ry="5" fill="#4A6630" transform="rotate(-30 56 18)"/>
+  </svg>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:2.7rem;font-weight:600;color:var(--gold);letter-spacing:.12em;animation:fadeUp .8s .3s both ease-out">Black Cherry</div>
+  <div style="font-size:.78rem;color:var(--text-secondary);letter-spacing:.3em;text-transform:uppercase;margin-top:6px;animation:fadeUp .8s .5s both ease-out">Intimately Yours</div>
+  <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto 0;animation:fadeUp .8s .7s both ease-out"></div>
+  <div style="margin-top:56px;width:44px;height:2px;background:var(--border);border-radius:2px;overflow:hidden;animation:fadeUp .8s .9s both ease-out">
+    <div style="width:40%;height:100%;background:var(--gold);animation:loadSlide 1.8s 1s infinite ease-in-out"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     AGE GATE
+══════════════════════════════════════════════════════════ -->
+<div id="age-gate" class="hidden" style="position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.93);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:24px">
+  <div style="width:100%;max-width:380px;background:linear-gradient(160deg,var(--cherry-deep),var(--surface));border:1px solid var(--border-gold);border-radius:var(--r-xl);padding:36px 28px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.8),var(--sh-gold);animation:scaleIn .4s ease-out">
+    <div style="font-size:2.8rem;margin-bottom:14px">🍒</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);margin-bottom:8px">Accès Réservé</h2>
+    <p style="font-size:.87rem;color:var(--text-secondary);line-height:1.65;margin-bottom:28px">Black Cherry propose des produits intimes réservés aux adultes.<br/>Confirmez avoir <strong>21 ans ou plus</strong> pour continuer.</p>
+    <button class="btn btn-gold btn-full" id="age-yes" style="padding:14px;font-size:.95rem">✓ J'ai 21 ans ou plus</button>
+    <button class="btn btn-ghost btn-full" style="margin-top:10px;font-size:.85rem" onclick="window.location='about:blank'">Non, quitter</button>
+    <div style="font-size:.73rem;color:var(--text-muted);margin-top:16px;line-height:1.5">🔒 Confirmation enregistrée localement. Aucune donnée partagée.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     APP SHELL
+══════════════════════════════════════════════════════════ -->
+<div id="app" class="hidden">
+
+  <!-- Conteneur des écrans — rempli dynamiquement par loadModules() -->
+  <div id="screens-host"></div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item" id="nav-home" onclick="Router.navigate('home')" aria-label="Accueil">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+        <path d="M9 21V12h6v9"/>
+      </svg>
+      <span>Accueil</span>
+    </button>
+    <button class="nav-item" id="nav-cart" onclick="Router.navigate('cart')" aria-label="Panier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span>Panier</span>
+      <div class="nav-badge hidden" id="cart-badge">0</div>
+    </button>
+    <button class="nav-item" id="nav-profile" onclick="Router.navigate('profile')" aria-label="Mon compte">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      <span>Compte</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Modale globale -->
+<div id="overlay" class="overlay hidden" onclick="Modal.onOverlayClick(event)">
+  <div class="modal" id="modal-content" onclick="event.stopPropagation()"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCRIPTS — Couche data / state / utilitaires
+     Chargés en premier car requis par les modules screens/.
+══════════════════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/router.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════
+     APP SHELL — Bootstrap
+     Charge les modules screens/*.html dynamiquement,
+     puis démarre l'application.
+══════════════════════════════════════════════════════════ -->
+<script>
+const AppShell = (() => {
+
+  /* Modules à charger dans l'ordre (HTML + CSS + JS en un seul fichier) */
+  const MODULES = ['auth','home','detail','cart','checkout','profile','cgv'];
+
+  /* ── Chargement dynamique des modules ── */
+  async function loadModules() {
+    const host = document.getElementById('screens-host');
+    for (const name of MODULES) {
+      const res  = await fetch(`screens/${name}.html`);
+      const html = await res.text();
+      const wrap = document.createElement('div');
+      wrap.innerHTML = html;
+      // Extraire et exécuter les <script> (innerHTML ne les exécute pas)
+      wrap.querySelectorAll('script').forEach(s => {
+        const exec = document.createElement('script');
+        exec.textContent = s.textContent;
+        document.head.appendChild(exec);
+        s.remove();
+      });
+      // Extraire et appliquer les <style>
+      wrap.querySelectorAll('style').forEach(s => {
+        document.head.appendChild(s.cloneNode(true));
+        s.remove();
+      });
+      host.appendChild(wrap);
+    }
+  }
+
+  /* ── Démarrage ── */
+  async function init() {
+    State.load();
+    await loadModules();
+
+    if (!State.get('ageConfirmed')) {
+      _hideSplash(() => document.getElementById('age-gate').classList.remove('hidden'));
+    } else {
+      _hideSplash(_boot);
+    }
+
+    document.getElementById('age-yes').addEventListener('click', () => {
+      State.set('ageConfirmed', true);
+      document.getElementById('age-gate').classList.add('hidden');
+      _boot();
+    });
+
+    AuthScreen.init();
+  }
+
+  function _hideSplash(cb) {
+    setTimeout(() => {
+      const s = document.getElementById('splash');
+      s.style.transition = 'opacity .5s';
+      s.style.opacity = '0';
+      setTimeout(() => { s.style.display = 'none'; cb(); }, 500);
+    }, 2400);
+  }
+
+  function _boot() {
+    document.getElementById('app').classList.remove('hidden');
+    updateBadge();
+    if (State.get('loggedIn') || State.get('isGuest')) {
+      HomeScreen.onEnter();
+      Router.navigate('home');
+    } else {
+      Router.navigate('auth');
+    }
+  }
+
+  function updateBadge() {
+    const n = State.cartCount();
+    const b = document.getElementById('cart-badge');
+    if (!b) return;
+    b.textContent = n;
+    b.classList.toggle('hidden', n === 0);
+  }
+
+  return { init, updateBadge };
+
+})();
+
+window.addEventListener('DOMContentLoaded', () => AppShell.init());
+</script>
+
+</body>
+</html>
