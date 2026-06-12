@@ -108,7 +108,16 @@ const DetailScreen = (() => {
              : p.stock <= 8 ? `<span class="badge badge-warn">Stock limité</span>` : '';
 
     el.innerHTML = `
-      <div class="detail-img" style="background:${p.bgColor}">${p.emoji}</div>
+      <div
+          class="detail-img"
+          style="
+            background:${p.bgColor};
+            background-image:url('${p.img}');
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+          "
+      ></div>
       <div class="detail-body">
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
           <span class="badge badge-cherry" style="color:${dot}">${p.subcat}</span>

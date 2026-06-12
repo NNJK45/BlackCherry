@@ -1,42 +1,30 @@
 /* ================================================================
-   BLACK CHERRY — ROUTER (Navigation Controller)
+   BLACK CHERRY - ROUTER (Navigation Controller)
    Fichier : js/router.js
-   Rôle    : Gestion de la navigation entre écrans.
-             Chaque écran est un élément #sc-{name}.
-             Le router gère aussi la barre de navigation
-             et les écrans qui la masquent.
+   Role    : Gestion de la navigation entre ecrans.
 ================================================================ */
 
 const Router = (() => {
 
-  /** Identifiants de tous les écrans */
   const ALL_SCREENS = ["auth","home","product","cart","checkout","profile","cgv"];
-
-  /** Écrans qui masquent la bottom nav */
   const HIDE_NAV = new Set(["auth","product","checkout","cgv"]);
 
-  /** Écran précédent (pour le bouton retour des CGV) */
   let _prev = "home";
-
-  /** Écran actif courant */
   let _current = null;
+  const _history = [];
 
-  /**
-   * Navigue vers un écran.
-   * @param {string} screenId  - ID de l'écran cible
-   * @param {Object} [params]  - Données optionnelles passées au module cible
-   */
-  function navigate(screenId, params = {}) {
+  function navigate(screenId, params = {}, options = {}) {
     if (!ALL_SCREENS.includes(screenId)) {
-      console.warn(`[Router] Écran inconnu : "${screenId}"`);
+      console.warn(`[Router] Ecran inconnu : "${screenId}"`);
       return;
     }
 
-    // Mémoriser l'écran précédent (sauf CGV)
-    if (_current && _current !== "cgv") _prev = _current;
+    if (_current && _current !== screenId) {
+      if (!options.replace) _history.push(_current);
+      if (_current !== "cgv") _prev = _current;
+    }
     _current = screenId;
 
-    // Masquer tous les écrans
     ALL_SCREENS.forEach(id => {
       const el = document.getElementById(`sc-${id}`);
       if (!el) return;
@@ -44,44 +32,52 @@ const Router = (() => {
       el.style.display = "none";
     });
 
-    // Afficher l'écran cible
     const target = document.getElementById(`sc-${screenId}`);
     if (target) {
       target.style.display = "flex";
-      // Petit délai pour déclencher la transition CSS
       requestAnimationFrame(() => target.classList.add("active"));
     }
 
-    // Bottom nav
     const nav = document.getElementById("bottom-nav");
     if (nav) {
       nav.style.display = HIDE_NAV.has(screenId) ? "none" : "flex";
     }
 
-    // Mettre à jour l'état actif de la nav
     document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
     const navEl = document.getElementById(`nav-${screenId}`);
     if (navEl) navEl.classList.add("active");
 
-    // Callbacks d'initialisation des modules par écran
     _onEnter(screenId, params);
   }
 
-  /** Retourne à l'écran précédent */
   function back() {
-    navigate(_prev);
+    if (_history.length) {
+      navigate(_history.pop(), {}, { replace: true });
+      return true;
+    }
+    if (_current && _current !== "home" && _current !== "auth") {
+      navigate("home", {}, { replace: true });
+      return true;
+    }
+    return true;
   }
 
-  /** Retourne l'identifiant de l'écran précédent */
-  function getPrev() { return _prev; }
+  function handleNativeBack() {
+    const overlay = document.getElementById("overlay");
+    if (overlay && !overlay.classList.contains("hidden")) {
+      Modal.close();
+      return true;
+    }
+    if (_current === "checkout" && typeof CheckoutScreen !== "undefined") {
+      CheckoutScreen.back();
+      return true;
+    }
+    return back();
+  }
 
-  /** Retourne l'identifiant de l'écran actif */
+  function getPrev() { return _prev; }
   function getCurrent() { return _current; }
 
-  /**
-   * Hook appelé à chaque entrée dans un écran.
-   * Chaque module expose une méthode onEnter() optionnelle.
-   */
   function _onEnter(screenId, params) {
     const hooks = {
       home:     () => typeof HomeScreen     !== "undefined" && HomeScreen.onEnter(),
@@ -93,9 +89,10 @@ const Router = (() => {
     if (hooks[screenId]) hooks[screenId]();
   }
 
-  return { navigate, back, getPrev, getCurrent };
+  return { navigate, back, handleNativeBack, getPrev, getCurrent };
 
 })();
 
-// Alias court pour l'usage inline dans le HTML
 const Nav = Router;
+
+window.addEventListener("native-back", () => Router.handleNativeBack());

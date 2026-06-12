@@ -17,6 +17,7 @@
  * @property {string}         cat         - Catégorie : 'lingerie' | 'skincare' | 'adult'
  * @property {string}         subcat      - Sous-catégorie (ex: 'femme', 'serum', 'sextoys')
  * @property {string}         emoji       - Emoji représentatif
+ * @property {string}         img         - URL de l'image (ex: "assets/lf001.jpg")
  * @property {string}         bgColor     - Couleur de fond de la vignette (rgba)
  * @property {string}         name        - Nom public du produit
  * @property {string}         discreteName - Nom discret (mode discret activé)
@@ -38,6 +39,7 @@ const CATALOG = [
   {
     id: "LF001", cat: "lingerie", subcat: "femme",
     emoji: "🌸", bgColor: "rgba(107,20,64,.35)",
+    img: "assets/lf001.jpg",
     name: "Ensemble Dentelle Nuit",
     discreteName: "Réf. BC-LF001",
     desc: "Ensemble deux pièces en dentelle française finement ouvragée. Soutien-gorge push-up et culotte taille haute assortie. Matière : 85% Polyamide, 15% Élasthanne.",
@@ -48,6 +50,7 @@ const CATALOG = [
   {
     id: "LF002", cat: "lingerie", subcat: "femme",
     emoji: "💎", bgColor: "rgba(107,20,64,.35)",
+    img: "assets/lf002.jpg",
     name: "Parure Satin Royal",
     discreteName: "Réf. BC-LF002",
     desc: "Parure complète en satin de luxe avec ornements nacrés. Body déshabillé avec fermeture lacet. Finition impeccable, douceur incomparable sur la peau.",
@@ -58,6 +61,7 @@ const CATALOG = [
   {
     id: "LF003", cat: "lingerie", subcat: "femme",
     emoji: "🦋", bgColor: "rgba(107,20,64,.35)",
+    img: "assets/lf003.jpg",
     name: "Body Résille Or",
     discreteName: "Réf. BC-LF003",
     desc: "Body en résille fine avec détails dorés. Taille unique extensible. Finition bords élastiques dorés et bretelles ajustables.",
@@ -68,6 +72,7 @@ const CATALOG = [
   {
     id: "LF004", cat: "lingerie", subcat: "femme",
     emoji: "🌹", bgColor: "rgba(107,20,64,.35)",
+    img: "assets/lf004.jpg",
     name: "Corset Victorian Noir",
     discreteName: "Réf. BC-LF004",
     desc: "Corset style victorien en satin noir avec broderies rouges. Baleinage flexible. Lacets satin ajustables. Réhausse et affine la silhouette.",
@@ -78,6 +83,7 @@ const CATALOG = [
   {
     id: "LF005", cat: "lingerie", subcat: "femme",
     emoji: "🖤", bgColor: "rgba(107,20,64,.35)",
+    img: "assets/lf005.jpg",
     name: "Nuisette Voile Transparent",
     discreteName: "Réf. BC-LF005",
     desc: "Nuisette longue en voile transparent avec broderies. Décolleté en V, ruban satin. Longueur mi-cuisse.",
@@ -92,6 +98,7 @@ const CATALOG = [
   {
     id: "LH001", cat: "lingerie", subcat: "homme",
     emoji: "🔲", bgColor: "rgba(40,20,80,.35)",
+    img: "assets/lh001.jpg",
     name: "Boxer Satin Premium",
     discreteName: "Réf. BC-LH001",
     desc: "Boxer homme en satin mat ultra-confortable. Taille élastique avec logo brodé. Coupe ajustée qui valorise la silhouette masculine.",
@@ -102,6 +109,7 @@ const CATALOG = [
   {
     id: "LH002", cat: "lingerie", subcat: "homme",
     emoji: "🩲", bgColor: "rgba(40,20,80,.35)",
+    img: "assets/lh002.jpg",
     name: "Slip Dentelle Homme",
     discreteName: "Réf. BC-LH002",
     desc: "Slip homme en dentelle fine et microfibre. Confort exceptionnel. Designé pour l'intimité et le confort au quotidien.",
@@ -116,6 +124,7 @@ const CATALOG = [
   {
     id: "SK001", cat: "skincare", subcat: "gommage",
     emoji: "🫧", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk001.jpg",
     name: "Gommage Corps Sucre Noir",
     discreteName: "Réf. BC-SK001",
     desc: "Gommage corps exfoliant au sucre noir, huile de coco et extrait de cerise. Élimine les cellules mortes et hydrate intensément. 250g.",
@@ -124,6 +133,7 @@ const CATALOG = [
   {
     id: "SK002", cat: "skincare", subcat: "gommage",
     emoji: "🌿", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk002.jpg",
     name: "Masque Exfoliant Rose",
     discreteName: "Réf. BC-SK002",
     desc: "Masque exfoliant aux microsphères de riz et pétales de rose. Purifie les pores, lisse la texture. Éclat immédiat. 80ml.",
@@ -136,6 +146,7 @@ const CATALOG = [
   {
     id: "SK003", cat: "skincare", subcat: "lotion",
     emoji: "💧", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk003.jpg",
     name: "Lotion Tonique Éclat",
     discreteName: "Réf. BC-SK003",
     desc: "Lotion tonique à la niacinamide 5% et eau de rose. Resserre les pores, unifie le teint, prépare la peau au sérum. Sans alcool. 150ml.",
@@ -148,6 +159,7 @@ const CATALOG = [
   {
     id: "SK004", cat: "skincare", subcat: "serum",
     emoji: "✨", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk004.jpg",
     name: "Sérum Éclat Vitamine C",
     discreteName: "Réf. BC-SK004",
     desc: "Sérum concentré à l'acide hyaluronique et vitamine C stabilisée. Atténue les taches, unifie le teint, repulpe la peau dès 14 jours. 30ml.",
@@ -156,6 +168,7 @@ const CATALOG = [
   {
     id: "SK005", cat: "skincare", subcat: "serum",
     emoji: "⚡", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk005.jpg",
     name: "Sérum Rétinol Nuit",
     discreteName: "Réf. BC-SK005",
     desc: "Sérum au rétinol 0.3% encapsulé pour une diffusion progressive. Anti-rides, anti-taches. À utiliser le soir uniquement. 30ml.",
@@ -168,6 +181,7 @@ const CATALOG = [
   {
     id: "SK006", cat: "skincare", subcat: "masques",
     emoji: "🎭", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk006.jpg",
     name: "Masque Argile Purifiante",
     discreteName: "Réf. BC-SK006",
     desc: "Masque à l'argile kaolin et charbon actif. Absorbe le sébum, désincruste les pores. Peau nette et matifiée après 15 min. 80ml.",
@@ -180,6 +194,7 @@ const CATALOG = [
   {
     id: "SK007", cat: "skincare", subcat: "cremes",
     emoji: "🌙", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk007.jpg",
     name: "Crème Nuit Régénérante",
     discreteName: "Réf. BC-SK007",
     desc: "Crème de nuit au rétinol encapsulé et beurre de karité africain. Renouvellement cellulaire nocturne. Sans parabènes. 50ml.",
@@ -188,6 +203,7 @@ const CATALOG = [
   {
     id: "SK008", cat: "skincare", subcat: "cremes",
     emoji: "☀️", bgColor: "rgba(26,64,40,.35)",
+    img: "assets/sk008.jpg",
     name: "Crème Jour SPF30",
     discreteName: "Réf. BC-SK008",
     desc: "Crème de jour légère SPF30 au karité et aloe vera. Protection solaire, hydratation 8h, fini naturel. 50ml.",
@@ -200,6 +216,7 @@ const CATALOG = [
   {
     id: "AD001", cat: "adult", subcat: "sextoys",
     emoji: "💫", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad001.jpg",
     name: "Vibromasseur Intime Élite",
     discreteName: "Réf. BC-AD001",
     desc: "Appareil de bien-être intime rechargeable USB-C. 10 modes progressifs. Silicone médical hypoallergénique. IPX7 étanche. Silencieux < 40dB. Autonomie 2h.",
@@ -210,6 +227,7 @@ const CATALOG = [
   {
     id: "AD002", cat: "adult", subcat: "sextoys",
     emoji: "✦", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad002.jpg",
     name: "Kit Initiation Bien-être",
     discreteName: "Réf. BC-AD002",
     desc: "Coffret découverte : vibromasseur compact silicone rechargeable + lubrifiant aloe 50ml + nettoyant 30ml. Emballage neutre.",
@@ -222,6 +240,7 @@ const CATALOG = [
   {
     id: "AD003", cat: "adult", subcat: "lubrifiants",
     emoji: "🌊", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad003.jpg",
     name: "Lubrifiant Naturel Premium",
     discreteName: "Réf. BC-AD003",
     desc: "Lubrifiant intime à base d'eau enrichi à l'aloe vera bio. Compatible préservatifs et silicone. Sans parabènes ni glycérine. pH équilibré (4.0). 100ml.",
@@ -230,6 +249,7 @@ const CATALOG = [
   {
     id: "AD004", cat: "adult", subcat: "lubrifiants",
     emoji: "🍓", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad004.jpg",
     name: "Lubrifiant Arôme Fruits",
     discreteName: "Réf. BC-AD004",
     desc: "Lubrifiant intime à base d'eau arôme fraises. Compatible latex. Sans sucre ajouté. Comestible. pH équilibré. 75ml.",
@@ -242,6 +262,7 @@ const CATALOG = [
   {
     id: "AD005", cat: "adult", subcat: "cosplay",
     emoji: "🎭", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad005.jpg",
     name: "Kit Cosplay Infirmière",
     discreteName: "Réf. BC-AD005",
     desc: "Costume cosplay adulte complet : robe courte, chapeau, accessoires assortis. Matière satin polyester stretch. Taille unique extensible.",
@@ -256,6 +277,7 @@ const CATALOG = [
   {
     id: "AD006", cat: "adult", subcat: "divers",
     emoji: "🧴", bgColor: "rgba(44,0,30,.5)",
+    img: "assets/ad006.jpg",
     name: "Nettoyant Jouets Intime",
     discreteName: "Réf. BC-AD006",
     desc: "Spray nettoyant antibactérien sans alcool pour accessoires intimes. Formule enzymatique naturelle. Sans rinçage. 150ml.",

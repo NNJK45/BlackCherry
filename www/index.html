@@ -141,6 +141,7 @@ const AppShell = (() => {
 
   /* ── Démarrage ── */
   async function init() {
+    _configureNativeChrome();
     State.load();
     await loadModules();
 
@@ -157,6 +158,15 @@ const AppShell = (() => {
     });
 
     AuthScreen.init();
+  }
+
+  function _configureNativeChrome() {
+    const statusBar = window.Capacitor?.Plugins?.StatusBar;
+    if (!statusBar) return;
+    try {
+      statusBar.setOverlaysWebView({ overlay: false });
+      statusBar.setBackgroundColor({ color: '#121212' });
+    } catch (_) {}
   }
 
   function _hideSplash(cb) {

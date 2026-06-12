@@ -1,7 +1,7 @@
 package com.blackcherry.intimatelyyours;
 
 import android.os.Bundle;
-import android.view.WindowManager;
+import androidx.activity.OnBackPressedCallback;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
@@ -11,10 +11,16 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(com.capacitorjs.plugins.splashscreen.SplashScreenPlugin.class);
         registerPlugin(com.capacitorjs.plugins.statusbar.StatusBarPlugin.class);
         super.onCreate(savedInstanceState);
-        // Écran immersif — cacher la barre de navigation
-        getWindow().setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        );
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (getBridge() == null || getBridge().getWebView() == null) return;
+                getBridge().getWebView().evaluateJavascript(
+                    "window.dispatchEvent(new CustomEvent('native-back'))",
+                    null
+                );
+            }
+        });
     }
 }

@@ -78,7 +78,7 @@ const CheckoutScreen = (() => {
 
   function onEnter() { _step = 1; _data = {}; _render(); }
 
-  function back() { _step > 1 ? (--_step, _render()) : Router.navigate('cart'); }
+  function back() { _step > 1 ? (--_step, _render()) : Router.navigate('cart', {}, { replace: true }); }
 
   /* ── Stepper ── */
   function _render() {
