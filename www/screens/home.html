@@ -304,6 +304,42 @@
     height: 7px;
     border-radius: 50%;
   }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .slider-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity .3s ease;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(0, 0, 0, .4);
+    color: white;
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .slider-btn.left {
+    left: 8px;
+  }
+
+  .slider-btn.right {
+    right: 8px;
+  }
 </style>
 
 
@@ -359,6 +395,7 @@
     function _render() {
       const grid = document.getElementById('products-list');
       if (!grid) return;
+      SliderManager.destroyPrefix('home-');
       const q = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
       const d = State.get('discreet');
 
@@ -376,6 +413,9 @@
       }
       grid.innerHTML = items.map(_card).join('');
     }
+    function createImageSlider(images, idPrefix) {
+      return SliderManager.render(images, idPrefix);
+    }
 
     function _card(p) {
       const d = State.get('discreet');
@@ -384,15 +424,10 @@
       const sc = p.stock <= 3 ? 'var(--error)' : p.stock <= 8 ? 'var(--warn)' : 'var(--success)';
       const sl = p.stock <= 3 ? 'Dernières pièces' : p.stock <= 8 ? 'Stock limité' : 'En stock';
       return `<div class="product-card" onclick="DetailScreen.open('${p.id}')">
-      <div
-          class="product-card-img"
-          style="
-            background-image:url('${p.img}');
-            background-size:cover;
-            background-position:center;
-            background-repeat:no-repeat;">
-          <div class="cat-dot" style="background:${dot}"></div>
-        </div>
+      <div class="product-card-img">
+        ${createImageSlider(p.images || [p.img], `home-${p.id}`)}
+        <div class="cat-dot" style="background:${dot}"></div>
+      </div>
       <div class="product-card-body">
         <div>
           <div class="p-name">${name}</div>

@@ -68,3 +68,130 @@ const Utils = {
     setTimeout(() => el.remove(), duration);
   }
 };
+
+const SliderManager = (() => {
+  const sliders = new Map();
+
+  function _normalizeImages(images) {
+    return (Array.isArray(images) ? images : [])
+      .filter(Boolean)
+      .map(src => String(src));
+  }
+
+  function _setImage(id) {
+    const slider = sliders.get(id);
+    if (!slider) return;
+
+    const img = document.getElementById(`${id}-img`);
+    if (!img) {
+      destroy(id);
+      return;
+    }
+
+    img.src = slider.images[slider.index];
+  }
+
+  function _startAutoSlide(id) {
+    const slider = sliders.get(id);
+    if (!slider || slider.images.length <= 1) return;
+
+    slider.intervalId = window.setInterval(() => {
+      next(id);
+    }, 4000);
+  }
+
+  function register(id, images) {
+    const cleanId = String(id);
+    const cleanImages = _normalizeImages(images);
+
+    destroy(cleanId);
+
+    if (!cleanImages.length) return;
+
+    sliders.set(cleanId, {
+      images: cleanImages,
+      index: 0,
+      intervalId: null
+    });
+
+    _startAutoSlide(cleanId);
+  }
+
+  function destroy(id) {
+    const slider = sliders.get(String(id));
+    if (!slider) return;
+
+    if (slider.intervalId) {
+      window.clearInterval(slider.intervalId);
+    }
+    sliders.delete(String(id));
+  }
+
+  function destroyPrefix(prefix) {
+    const cleanPrefix = String(prefix);
+    Array.from(sliders.keys()).forEach(id => {
+      if (id.startsWith(cleanPrefix)) destroy(id);
+    });
+  }
+
+  function next(id) {
+    const slider = sliders.get(String(id));
+    if (!slider || !slider.images.length) return;
+
+    slider.index = (slider.index + 1) % slider.images.length;
+    _setImage(String(id));
+  }
+
+  function prev(id) {
+    const slider = sliders.get(String(id));
+    if (!slider || !slider.images.length) return;
+
+    slider.index = (slider.index - 1 + slider.images.length) % slider.images.length;
+    _setImage(String(id));
+  }
+
+  function render(images, idPrefix) {
+    const id = String(idPrefix);
+    const cleanImages = _normalizeImages(images);
+
+    if (!cleanImages.length) {
+      return `
+        <div class="slider">
+          <img src="assets/no-image.jpg" class="slider-img" alt="" />
+        </div>
+      `;
+    }
+
+    register(id, cleanImages);
+
+    return `
+      <div class="slider" data-slider-id="${Utils.esc(id)}">
+        <img
+          id="${Utils.esc(id)}-img"
+          src="${Utils.esc(cleanImages[0])}"
+          class="slider-img"
+          alt=""
+        />
+        <button
+          type="button"
+          class="slider-btn left"
+          onclick="event.stopPropagation(); window.__sliderPrev('${Utils.esc(id)}')"
+          aria-label="Image precedente">
+          &#8249;
+        </button>
+        <button
+          type="button"
+          class="slider-btn right"
+          onclick="event.stopPropagation(); window.__sliderNext('${Utils.esc(id)}')"
+          aria-label="Image suivante">
+          &#8250;
+        </button>
+      </div>
+    `;
+  }
+
+  return { register, destroy, destroyPrefix, next, prev, render };
+})();
+
+window.__sliderNext = id => SliderManager.next(id);
+window.__sliderPrev = id => SliderManager.prev(id);
